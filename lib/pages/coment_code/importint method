@@ -1,0 +1,27 @@
+import 'dart:math';
+
+// Define a method to generate a random credit card number
+String generateRandomCreditCardNumber() {
+  Random random = Random();
+  String creditCardNumber = '';
+  for (int i = 0; i < 17; i++) {
+    if ((i >= 1 && i <= 8) || (i >= 13 && i <= 16)) {
+      // Generate a random digit for the specified segments
+      creditCardNumber += random.nextInt(10).toString();
+    } else {
+      // Use 'x' for other segments
+      creditCardNumber += 'x';
+    }
+    if (i == 8 || i == 12) {
+      // Add a space after the 8th and 12th character
+      creditCardNumber += ' ';
+    }
+  }
+  return creditCardNumber;
+}
+
+void main() {
+  // Call the method to generate a random credit card number
+  String randomCreditCardNumber = generateRandomCreditCardNumber().substring(1);
+  print(randomCreditCardNumber);
+}

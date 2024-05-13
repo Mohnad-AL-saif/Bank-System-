@@ -1,0 +1,290 @@
+
+
+
+
+          // ElevatedButton(
+          //   onPressed: () {
+          //     Navigator.pushAndRemoveUntil(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const Page2(),
+          //       ),
+          //       (route) => false,
+          //     );
+          //   },
+          //   child: const Text(
+          //     "&& go to page 2 &&",
+          //     style: TextStyle(fontSize: 20),
+          //   ),
+
+
+
+
+
+/*import 'package:flutter/material.dart';
+import 'package:flutter_application_1/services/databace.dart';
+
+// ignore: must_be_immutable
+class Page3 extends StatelessWidget {
+  const Page3({
+    super.key,
+  });
+  @override
+  Widget build(BuildContext context) {
+    // Accessing the static variable from the Database class
+    String nameOfFirstPersonpage3 = Database.nameOfFirstPerson;
+
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+        title: const Text("page3"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
+          const Icon(
+            Icons.monetization_on,
+            size: 20,
+            color: Colors.green,
+          ),
+          Text(
+            'hi:  $nameOfFirstPersonpage3',
+            style: const TextStyle(fontSize: 20),
+          ),
+          Text(
+            'Username:  $nameOfFirstPersonpage3',
+            style: const TextStyle(fontSize: 20),
+          ),
+          Text(
+            'money :  $nameOfFirstPersonpage3',
+            style: const TextStyle(fontSize: 20),
+          ),
+
+          ElevatedButton(
+            onPressed: () {
+              setState() {
+                _newname();
+              }
+            },
+            child: const Text(
+              "pop",
+              style: TextStyle(fontSize: 20),
+            ),
+          ),*/
+// ElevatedButton(
+//   onPressed: () {
+//     Navigator.pushAndRemoveUntil(
+//       context,
+//       MaterialPageRoute(
+//         builder: (context) => const Page2(),
+//       ),
+//       (route) => false,
+//     );
+//   },
+//   child: const Text(
+//     "&& go to page 2 &&",
+//     style: TextStyle(fontSize: 20),
+//       //   ),
+//     ]),
+//   ),
+// );
+
+//   ),
+//     // );
+//   }
+// }
+
+//-----------------------------------------------------------------
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/services/databace.dart';
+
+// class Page3 extends StatefulWidget {
+//   const Page3({Key? key}) : super(key: key);
+
+//   @override
+//   _Page3State createState() => _Page3State();
+// }
+
+// class _Page3State extends State<Page3> {
+//   late String nameOfFirstPersonpage3 = Database.nameOfFirstPerson;
+
+//   void _updateName() {
+//     setState(() {
+//       nameOfFirstPersonpage3 = Database.nameOfFirstPerson;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Colors.deepPurpleAccent,
+//         title: const Text("page3"),
+//         centerTitle: true,
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             const Icon(
+//               Icons.monetization_on,
+//               size: 20,
+//               color: Colors.green,
+//             ),
+//             Text(
+//               'hi:  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             Text(
+//               'Username:  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             Text(
+//               'money :  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             ElevatedButton(
+//               onPressed: _updateName,
+//               child: const Text(
+//                 "pop",
+//                 style: TextStyle(fontSize: 20),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//-----------------------------------------------------------------
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/services/databace.dart';
+
+// class Page3 extends StatelessWidget {
+//   const Page3({Key? key}) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     // Accessing the static variable from the Database class
+//     String nameOfFirstPersonpage3 = Database.nameOfFirstPerson;
+
+//     return Scaffold(
+//       appBar: AppBar(
+//         backgroundColor: Colors.deepPurpleAccent,
+//         title: const Text("page3"),
+//         centerTitle: true,
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisSize: MainAxisSize.min,
+//           children: [
+//             const Icon(
+//               Icons.monetization_on,
+//               size: 20,
+//               color: Colors.green,
+//             ),
+//             Text(
+//               'hi:  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             Text(
+//               'Username:  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             Text(
+//               'money :  $nameOfFirstPersonpage3',
+//               style: const TextStyle(fontSize: 20),
+//             ),
+//             ElevatedButton(
+//               onPressed: () {
+//                 // Delay the navigation to the next page by 3 seconds
+//                 Future.delayed(Duration(seconds: 3), () {
+//                   // Navigate to the next page
+//                   Navigator.push(
+//                     context,
+//                     MaterialPageRoute(builder: (context) => NextPage()),
+//                   );
+//                 });
+//               },
+//               child: const Text(
+//                 "pop",
+//                 style: TextStyle(fontSize: 20),
+//               ),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class NextPage extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Next Page'),
+//       ),
+//       body: Center(
+//         child: Text('This is the next page after a 3-second delay!'),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+//-----------------------------------------------------------------
+
+
+
+/*
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/model/user.dart';  // Adjust the import path as needed
+import 'package:flutter_application_1/services/database.dart';  // Adjust the import path as needed
+
+class Page3 extends StatelessWidget {
+  const Page3({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepPurpleAccent,
+        title: const Text("Page 3"),
+        centerTitle: true,
+      ),
+      body: FutureBuilder<List<User1>>(
+        future: Database().getAccount(id: "specificUserID"),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else if (snapshot.hasData) {
+            final nameOfFirstPerson = snapshot.data![0].name; // Assuming 'name' is a field in User1
+            final nameOfSecondPerson = snapshot.data![1].name;
+            final nameOfThirdPerson = snapshot.data![2].name;
+
+            return Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text('hi: $nameOfFirstPerson', style: TextStyle(fontSize: 20)),
+                  Text('Username: $nameOfSecondPerson', style: TextStyle(fontSize: 20)),
+                  Text('money : $nameOfThirdPerson', style: TextStyle(fontSize: 20)),
+                ],
+              ),
+            );
+          } else {
+            return const Text("No data available.");
+          }
+        },
+      ),
+    );
+  }
+}
+*/

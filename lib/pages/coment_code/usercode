@@ -1,0 +1,70 @@
+/*
+import 'package:flutter_application_day_3/services/databace.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+class User1 {
+  String? id;
+  String? name;
+  String? email;
+  String? phoneNumber;
+  String? password;
+  // ignore: prefer_typing_uninitialized_variables
+  var mk;
+  User1({this.id, this.name, this.email, this.phoneNumber, this.password});
+
+  User1.fromJson(Map json) {
+    id = json["id"];
+    mk = id;
+    name = json["name"];
+    email = json["email"];
+    phoneNumber = json["phone"];
+    password = json["password"];
+    print(id);
+    print(name);
+    print(mk);
+  }
+////34253423423
+//GSD
+//GSD34234---
+//------------------------------------------------------------------------------------------------------
+  factory User1.fromJsonList(List<Map<String, dynamic>> jsonList) {
+    return User1(
+      id: jsonList[0]["id"],
+      name: jsonList[0]["name"],
+      email: jsonList[0]["email"],
+      phoneNumber: jsonList[0]["phone"],
+      password: jsonList[0]["password"],
+    );
+  }
+//------------------------------------------------------------------------------------------------------
+// factory User1.fromJ1sonList(List<Map<String, dynamic>> jsonList) {
+//   List<User1> users = [];
+//   for (var json in jsonList) {
+//     users.add(User1.fromJson(json));
+//   }
+//   return User1.fromJson(users);
+// }
+
+//------------------------------------------------------------------------------------------------------
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "name": name,
+      "email": email,
+      "phone_numbe": phoneNumber,
+      "password": password
+    };
+  }
+
+  //------------------------------------------------------------------------------------------------------
+  factory User1.fromMap(Map<String, dynamic> map) {
+    return User1(
+      id: map['id'] as String, // Ensure these keys actually exist in the map
+      name: map['name'] as String,
+      email: map['email'] as String,
+    );
+  }
+  List<User1> users =
+      userData.map((userMap) => User1.fromMap(userMap)).toList();
+}
+*/
