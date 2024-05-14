@@ -106,7 +106,8 @@ dependencies:
   flutter:
     sdk: flutter
   font_awesome_flutter: ^10.7.0
-  supabase_flutter: ^2.5.2
+  supabase_flutter:
+    ^2.5.2
     # cupertino_icons: ^1.0.2
 
 dev_dependencies:
@@ -116,7 +117,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
 
   assets:
     - assets/back.jpeg
@@ -128,3 +128,7 @@ flutter:
     - assets/bg1.jpeg
     - assets/bg2.jpeg
     - assets/bg3.jpeg
+
+    - assets/images_card/card_mada_alinma.png
+    - assets/images_card/Credit_Card_Platinum_Touch.png
+    - assets/images_card/Tamkeen-plus-platinum-credit-card_albilad.png

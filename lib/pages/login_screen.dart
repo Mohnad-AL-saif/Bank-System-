@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/page1.dart';
-import 'package:flutter_application_1/pages/page3.dart';
+import 'package:flutter_application_1/pages/choose_an_account.dart';
 import 'package:flutter_application_1/services/databace.dart';
 import 'package:flutter_application_1/utils/animations.dart';
 
@@ -107,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Page1(),
+        builder: (context) => ChooseAnAccount(),
       ),
     );
   }
@@ -331,7 +330,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // ignore: use_build_context_synchronously
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const Page3(),
+                                  builder: (context) => ChooseAnAccount(),
+                                  // Page3(),
                                 ),
                               );
                             }
