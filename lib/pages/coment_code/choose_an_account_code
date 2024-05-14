@@ -1,0 +1,491 @@
+// import 'package:flutter/material.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('صفحة الأزرار'),
+//         ),
+//         body: Center(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: [
+//               SizedBox(
+//                 width: 500,
+//                 height: 300,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الأول
+//                   },
+//                   child: Container(
+//                     decoration: BoxDecoration(
+//                       image: DecorationImage(
+//                         image: AssetImage('assets/button_background_image.jpg'),
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                     child: Center(child: Text('زر 1')),
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 500,
+//                 height: 300,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الثاني
+//                   },
+//                   child: Container(
+//                     decoration: BoxDecoration(
+//                       image: DecorationImage(
+//                         image: AssetImage('assets/button_background_image.jpg'),
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                     child: Center(child: Text('زر 2')),
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 500,
+//                 height: 300,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الثالث
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                   child: Container(
+//                     decoration: const BoxDecoration(
+//                       image: DecorationImage(
+//                         image: AssetImage('assets/button_background_image.jpg'),
+//                         fit: BoxFit.cover,
+//                       ),
+//                     ),
+//                     child: const Center(child: Text('زر 3')),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// import 'package:flutter/material.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('صفحة الأزرار'),
+//         ),
+//         body: Center(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: [
+//               SizedBox(
+//                 width: 200,
+//                 height: 200,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الأول
+//                   },
+//                   child: Stack(
+//                     children: [
+//                       Align(
+//                         alignment: Alignment.bottomLeft, // تحت الزاوية اليسار
+//                         child: Padding(
+//                           padding: EdgeInsets.only(
+//                               left: 8.0, bottom: 8.0), // تضمين الهامش
+//                           child: Text(
+//                             'تحت الزاوية اليسار',
+//                             style: TextStyle(color: Colors.white),
+//                           ),
+//                         ),
+//                       ),
+//                       Center(
+//                         child: Text('زر 1'),
+//                       ),
+//                     ],
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 200,
+//                 height: 200,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الثاني
+//                   },
+//                   child: Stack(
+//                     children: [
+//                       Align(
+//                         alignment: Alignment.bottomLeft, // تحت الزاوية اليسار
+//                         child: Padding(
+//                           padding: EdgeInsets.only(
+//                               left: 8.0, bottom: 8.0), // تضمين الهامش
+//                           child: Text(
+//                             'تحت الزاوية اليسار',
+//                             style: TextStyle(color: Colors.white),
+//                           ),
+//                         ),
+//                       ),
+//                       Center(
+//                         child: Text('زر 2'),
+//                       ),
+//                     ],
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//               SizedBox(
+//                 width: 200,
+//                 height: 200,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الثالث
+//                   },
+//                   child: Stack(
+//                     children: [
+//                       Align(
+//                         alignment: Alignment.bottomLeft, // تحت الزاوية اليسار
+//                         child: Padding(
+//                           padding: EdgeInsets.only(
+//                               left: 8.0, bottom: 8.0), // تضمين الهامش
+//                           child: Text(
+//                             'تحت الزاوية اليسار',
+//                             style: TextStyle(color: Colors.white),
+//                           ),
+//                         ),
+//                       ),
+//                       Center(
+//                         child: Text('زر 3'),
+//                       ),
+//                     ],
+//                   ),
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/services/databace.dart';
+
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   late String nameOfFirstPersonpage31 = Database.nameOfFirstPerson;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('صفحة الأزرار'),
+//         ),
+//         body: Center(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: [
+//               SizedBox(
+//                 width: 200,
+//                 height: 200,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     // إجراء عند الضغط على الزر الأول
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                   child: const Stack(
+//                     children: [
+//                       Align(
+//                         alignment: Alignment.bottomLeft, // تحت الزاوية اليسار
+//                         child: Padding(
+//                           padding: EdgeInsets.only(
+//                               left: 8.0, bottom: 8.0), // تضمين الهامش
+//                           child: Column(
+//                             mainAxisAlignment:
+//                                 MainAxisAlignment.end, // توجيه العناصر للأسفل
+//                             crossAxisAlignment:
+//                                 CrossAxisAlignment.start, // توجيه النص لليسار
+//                             children: [
+//                               Text(
+//                                 'hi:  $nameOfFirstPersonpage31',
+//                                 style: const TextStyle(fontSize: 20),
+//                               ),
+//                               Text(
+//                                 '0123456789',
+//                                 style: TextStyle(color: Colors.white),
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                       Center(
+//                         child: Text('زر 1'),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               // الأزرار الباقية تابعة لهنا
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_application_1/services/databace.dart';
+
+// void main() {
+//   runApp(choose_an_account());
+// }
+
+// ignore: must_be_immutable, camel_case_types
+
+// ignore: must_be_immutable, camel_case_types
+
+//--------------------------------------------------------------------------------------------------------
+
+// class choose_an_account extends StatelessWidStatefulWidgetget {
+//   String nameOfFirstPersonpage31 = Database.nameOfFirstPerson;
+
+//   choose_an_account({super.key});
+
+//   void _updateName() {
+//     setState(() {
+//       nameOfFirstPersonpage31 = Database.nameOfFirstPerson;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text('صفحة الأزرار'),
+//         ),
+//         body: Center(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+//             children: [
+//               SizedBox(
+//                 width: 200,
+//                 height: 200,
+//                 child: ElevatedButton(
+//                   onPressed: () {
+//                     _updateName;
+//                     const Text(
+//                       "Show information",
+//                       style: TextStyle(fontSize: 20),
+//                     );
+//                     // إجراء عند الضغط على الزر الأول
+//                   },
+//                   style: ElevatedButton.styleFrom(
+//                     shape: RoundedRectangleBorder(
+//                       borderRadius:
+//                           BorderRadius.circular(0.0), // جعل الزر مربعًا
+//                     ),
+//                   ),
+//                   child: Stack(
+//                     children: [
+//                       Align(
+//                         alignment: Alignment.bottomLeft, // تحت الزاوية اليسار
+//                         child: Padding(
+//                           padding: EdgeInsets.only(
+//                               left: 8.0, bottom: 8.0), // تضمين الهامش
+//                           child: Column(
+//                             mainAxisAlignment:
+//                                 MainAxisAlignment.end, // توجيه العناصر للأسفل
+//                             crossAxisAlignment:
+//                                 CrossAxisAlignment.start, // توجيه النص لليسار
+//                             children: [
+//                               Text(
+//                                 'hi:  $nameOfFirstPersonpage31',
+//                                 style: TextStyle(fontSize: 20),
+//                               ),
+//                               Text(
+//                                 '0123456789',
+//                                 style: TextStyle(color: Colors.white),
+//                               ),
+//                             ],
+//                           ),
+//                         ),
+//                       ),
+//                       Center(
+//                         child: Text('زر 1'),
+//                       ),
+//                     ],
+//                   ),
+//                 ),
+//               ),
+//               // الأزرار الباقية تابعة لهنا
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//--------------------------------------------------------------------------------------------------------
+
+// class ChooseAnAccount extends StatefulWidget {
+//   ChooseAnAccount({super.key});
+
+//   @override
+//   _ChooseAnAccountState createState() => _ChooseAnAccountState();
+// }
+
+// class _ChooseAnAccountState extends State<ChooseAnAccount> {
+//   String nameOfFirstPerson = Database.nameOfFirstPerson;
+
+//   void _updateName() {
+//     setState(() {
+//       nameOfFirstPerson = Database.nameOfFirstPerson;
+//     });
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('صفحة الأزرار'),
+//         ),
+//         body: Center(
+//           child: SizedBox(
+//             width: 1600,
+//             height: 300,
+//             child: ListView(
+//               scrollDirection:
+//                   Axis.horizontal, // Make it scrollable horizontally
+//               children: [
+//                 buildButton('زر 1', 'hi: $nameOfFirstPerson', '0123456789',
+//                     _updateName, 'assets/Platinum_card_alrajhi.jpg'),
+//                 const SizedBox(width: 50), // Spacer between buttons
+//                 buildButton('زر 2', 'Welcome', '9876543210', () {},
+//                     'assets/card_mada_alinma.jpg'),
+//                 const SizedBox(width: 50), // Spacer between buttons
+//                 buildButton('زر 3', 'More Info', '1234567890', () {
+//                   // Placeholder for additional functionality
+//                 }, 'assets/Tamkeen-plus-platinum-credit-card_albilad.jpg'),
+//               ],
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget buildButton(String buttonLabel, String text1, String text2,
+//       VoidCallback onPressed, String imageAsset) {
+//     return Container(
+//       width: 500,
+//       height: 300,
+//       margin: const EdgeInsets.symmetric(
+//           vertical: 10), // Add vertical margin for spacing
+//       child: ElevatedButton(
+//         onPressed: onPressed,
+//         style: ElevatedButton.styleFrom(
+//           shape: RoundedRectangleBorder(
+//             borderRadius: BorderRadius.circular(0.0), // Square shape
+//           ),
+//         ),
+//         child: Stack(
+//           children: [
+//             Align(
+//               alignment: Alignment.bottomLeft,
+//               child: Padding(
+//                 padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
+//                 child: Column(
+//                   mainAxisAlignment: MainAxisAlignment.end,
+//                   crossAxisAlignment: CrossAxisAlignment.start,
+//                   children: [
+//                     Text(
+//                       text1,
+//                       style:
+//                           const TextStyle(fontSize: 16), // Adjusted font size
+//                     ),
+//                     Text(
+//                       text2,
+//                       style: const TextStyle(color: Colors.white),
+//                     ),
+//                   ],
+//                 ),
+//               ),
+//             ),
+//             Center(
+//               child: Text(buttonLabel),
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+//-------------------------------------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------
