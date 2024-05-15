@@ -1,85 +1,36 @@
-/*import 'dart:convert';
-
-import 'package:flutter_application_day_3/model/user.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-late List<Map<String, dynamic>> userData;
-
-class Database {
-  final supabase = Supabase.instance.client;
-  late String idFromSupabase;
-
-  Future<void> insertUser(User1 user) async {
-    await supabase.from('user').insert({
-      'id': user.id,
-      'names': user.name,
-      'email': user.email,
-      'phone': user.phoneNumber,
-      'password': user.password,
-    });
-  }
-//  Future<List<User1>> getAllUsers() async {
-
-  // Future<PostgrestList> getAllUsers() async {
-  //   final data =
-  //       // await supabase.from("User1").select().match({"email": "A@a.com"});
-  //       await supabase.from("user").select();
-  //   print(const JsonEncoder.withIndent("  ")
-  //       .convert(data)); //هاذي الي تطبع المعلومات في التيرمنل
-  //   List<User1> allUser = [];
-  //   for (var element in data) {
-  //     allUser.add(User1.fromJson(element));
-  //   }
-  //   return data;
-  // }
-
-  Future<List> getSpecificUser(
-      {required String idNumber, required String password}) async {
-    final data = await supabase
-        .from("user")
-        .select()
-        .match({"id": idNumber, "password": password});
-    print(data);
-    return data;
-  }
-
-  Future<PostgrestList> etspecificuseraccounts(
-      {required String idNumber, required String password}) async {
-    final data = await supabase
-        .from("user")
-        .select()
-        .match({"id": idNumber, "password": password});
-    print("---------------------------------------");
-
-    // print(User1.fromJson(data as Map));
-    return data;
-  }
-
-  Future<List> getAccount({required String id}) async {
-    userData = await supabase.from("Accounts").select().eq("user_id", id);
-
-    // structure print
-    print(const JsonEncoder.withIndent("  ").convert(userData));
-    // default print
-    String idFromSupabase = userData[0]['id'];
-    print("---------------------------------------");
-    print(idFromSupabase);
-    return userData;
-  }
-
-  List<User1> users =
-      userData.map((userMap) => User1.fromMap(userMap)).toList();
-}
-*/
-
 import 'package:flutter_application_1/model/user.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Database {
   final supabase = Supabase.instance.client;
+
   static String nameOfThirdPerson = "";
   static String nameOfSecondPerson = "";
   static String nameOfFirstPerson = "";
+
+  static String id1 = "";
+  static String id2 = "";
+  static String id3 = "";
+
+  static String userId1 = "";
+  static String userId2 = "";
+  static String userId3 = "";
+
+  static String iban1 = "";
+  static String iban2 = "";
+  static String iban3 = "";
+
+  static String cardNum1 = "";
+  static String cardNum2 = "";
+  static String cardNum3 = "";
+
+  static var money1 = "";
+  static var money2 = "";
+  static var money3 = "";
+
+  static String beneficiary1 = "";
+  static String beneficiary2 = "";
+  static String beneficiary3 = "";
 
   Future<void> insertUser(User1 user) async {
     await supabase.from('user').insert(user.toJson());
@@ -92,7 +43,11 @@ class Database {
         .select()
         .match({"id": idNumber, "password": password});
     print("---------------------------------------");
+    nameOfFirstPerson = data[0]['names'];
+    nameOfSecondPerson = data.length > 1 ? data[1]['names'] : "";
+    nameOfThirdPerson = data.length > 2 ? data[2]['names'] : "";
     // final User? user = data.user;
+    print(nameOfFirstPerson);
 
     print(data);
     print("---------------------------------------");
@@ -102,20 +57,38 @@ class Database {
         .toList();
     return users;
   }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Future<List<User1>> getAccount({required String id}) async {
-    // Assume 'Accounts' is a table, adjust based on your actual storage structure
     final response = await supabase.from('Accounts').select().eq('user_id', id);
-    // print(nameOfFirstPerson);
-    // print("response.first");gsd
-    nameOfFirstPerson = response.first['user_id']; // or [0]
-    print(nameOfFirstPerson + "3mk");
-    nameOfSecondPerson = response[1]['user_id'];
 
-    nameOfThirdPerson = response[2]['user_id'];
-    // print(nameOfThirdPerson);
-    // print("response[3]");
-    print(response.length);
+    if (response.isNotEmpty) {
+      id1 = response[0]['ID'] ?? "";
+      id2 = response.length > 1 ? response[1]['ID'] ?? "" : "";
+      id3 = response.length > 2 ? response[2]['ID'] ?? "" : "";
+
+      userId1 = response[0]['user_id'] ?? "";
+      userId2 = response.length > 1 ? response[1]['user_id'] ?? "" : "";
+      userId3 = response.length > 2 ? response[2]['user_id'] ?? "" : "";
+
+      iban1 = response[0]['iban'] ?? "";
+      iban2 = response.length > 1 ? response[1]['iban'] ?? "" : "";
+      iban3 = response.length > 2 ? response[2]['iban'] ?? "" : "";
+
+      cardNum1 = response[0]['CardNum'] ?? "";
+      cardNum2 = response.length > 1 ? response[1]['CardNum'] ?? "" : "";
+      cardNum3 = response.length > 2 ? response[2]['CardNum'] ?? "" : "";
+
+      money1 = response[0]['money'] ?? 0.0;
+      money2 = response.length > 1 ? response[1]['money'] ?? 0.0 : 0.0;
+      money3 = response.length > 2 ? response[2]['money'] ?? 0.0 : 0.0;
+
+      beneficiary1 = response[0]['Beneficiary'] ?? "";
+      beneficiary2 =
+          response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";
+      beneficiary3 =
+          response.length > 2 ? response[2]['Beneficiary'] ?? "" : "";
+    }
 
     List<User1> accounts = (response as List<dynamic>)
         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
@@ -123,23 +96,82 @@ class Database {
 
     return accounts;
   }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //   Future<List<User1>> getAccount({required String id}) async {
-//     final String objects = supabase.storage.from("Accounts").toString();
-//     //.eq("user_id", id);
-//     // print(objects);
-// // Assuming people is a List<Map<String, dynamic>> or a List of custom objects with a 'name' property
-//  nameOfSecondPerson = objects[1]["name"]; // Second person
-//  nameOfThirdPerson = objects[2]['name']; // Third person
-//  nameOfFirstPerson = objects.first['name'];
-//   someNumber = people.first['name']; // Incorrect, as 'name' is a String
+//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
+//     final response = await supabase.from('Accounts').select().eq('user_id', id);
 
-// // and so on...
+//     print(response);
 
-//     List<User1> accounts = (objects as List<dynamic>)
+//     // nameOfFirstPerson = response[0]['user_id'];
+//     // nameOfSecondPerson =
+//     //     response.length > 1 ? response[1]['user_id'] : "";
+//     // nameOfThirdPerson =
+//     //      response[2]['user_id'] : "";
+
+//     id1 = response[0]['ID'];
+//     id2 = response[1]['ID'];
+//     id3 = response[2]['ID'];
+//     print(id1);
+
+//     userId1 = response[0]['user_id'];
+//     userId2 = response[1]['user_id'];
+//     userId3 = response[2]['user_id'];
+
+//     iban1 = response[0]['iban'];
+//     iban2 = response[1]['iban'];
+//     iban3 = response[2]['iban'];
+
+//     cardNum1 = response[0]['CardNum'];
+//     cardNum2 = response[1]['CardNum'];
+//     cardNum3 = response[2]['CardNum'];
+
+//     money1 = response[0]['money'];
+//     money2 = response[1]['money'];
+//     money3 = response[2]['money'];
+
+//     beneficiary1 = response[0]['Beneficiary'];
+//     beneficiary2 = response[1]['Beneficiary'];
+//     beneficiary3 = response[2]['Beneficiary'];
+
+//     List<User1> accounts = (response as List<dynamic>)
 //         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
 //         .toList();
-//     //print("---------------------------------------");
+
 //     return accounts;
 //   }
-}
+// }
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//غلط
+// Future<List<User1>> getAccount({required String id}) async {
+//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
+//     final response = await Supabase.instance.client
+//         .from('Accounts')
+//         .select()
+//         .eq('user_id', id);
+//     print(response);
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//صح
+//   Future<List<User1>> getAccount({required String id}) async {
+//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
+//     final response = await supabase.from('Accounts').select().eq('user_id', id);
+//     print(response);
+
+//     nameOfFirstPerson = response.first['user_id']; // or [0]
+//     nameOfSecondPerson = response[1]['user_id'];
+
+//     nameOfThirdPerson = response[2]['user_id'];
+//     print(nameOfThirdPerson);
+//     // print("response[3]");
+//     print(response.length);
+
+//     List<User1> accounts = (response as List<dynamic>)
+//         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
+//         .toList();
+
+//     return accounts;
+//   }
+// }

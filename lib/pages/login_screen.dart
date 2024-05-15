@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/choose_an_account.dart';
+import 'package:flutter_application_1/pages/page1.dart';
 import 'package:flutter_application_1/services/databace.dart';
 import 'package:flutter_application_1/utils/animations.dart';
 
@@ -15,89 +16,6 @@ class LoginScreen extends StatefulWidget {
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
-/*  import 'package:flutter/material.dart';
-
-class YourWidget extends StatefulWidget {
-  @override
-  _YourWidgetState createState() => _YourWidgetState();
-}
-
-class _YourWidgetState extends State<YourWidget> {
-  TextEditingController idNumberController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controllers when the widget is disposed
-    idNumberController.dispose();
-    passwordController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const Spacer(),
-          Center(
-            child: Text(
-              "Login",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 30,
-              ),
-            ),
-          ),
-          const Spacer(),
-          Text("id num "),
-          Container(
-            height: 35,
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Colors.white),
-              ),
-            ),
-            child: TextFormField(
-              controller: idNumberController, // Connect the controller
-              style: const TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
-                suffixIcon: Icon(
-                  Icons.mail,
-                  color: Colors.white,
-                ),
-                fillColor: Colors.white,
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-          const Spacer(),
-          Text("Password"),
-          Container(
-            height: 35,
-            decoration: const BoxDecoration(
-              border: Border(
-                bottom: BorderSide(color: Colors.white),
-              ),
-            ),
-            child: TextFormField(
-              controller: passwordController, // Connect the controller
-              style: const TextStyle(color: Colors.white),
-              decoration: const InputDecoration(
-                suffixIcon: Icon(
-                  Icons.lock,
-                  color: Colors.white,
-                ),
-                fillColor: Colors.white,
-                border: InputBorder.none,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}*/
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController idNumberController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -106,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ChooseAnAccount(),
+        builder: (context) => Page1(),
       ),
     );
   }
