@@ -16,6 +16,25 @@ class Page1 extends StatelessWidget {
   Page1({super.key});
   Database databaseInstance = Database();
 
+  String generateRandomCreditCardNumber() {
+    Random random = Random();
+    String creditCardNumber = '';
+    for (int i = 0; i < 16; i++) {
+      if ((i >= 0 && i <= 3) || (i >= 4 && i <= 7) || (i >= 12 && i <= 15)) {
+        // Generate a random digit for the specified segments
+        creditCardNumber += random.nextInt(10).toString();
+      } else {
+        // Use 'x' for other segments
+        creditCardNumber += 'x';
+      }
+      if (i == 3 || i == 7 || i == 11) {
+        // Add a space after the 4th, 8th, and 12th character
+        creditCardNumber += ' ';
+      }
+    }
+    return creditCardNumber;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,20 +91,6 @@ class Page1 extends StatelessWidget {
                 }
                 return null;
                 // ignore: dead_code
-                Random random = Random();
-                for (int i = 0; i < 17; i++) {
-                  if ((i >= 1 && i <= 8) || (i >= 13 && i <= 16)) {
-                    // Generate a random digit for the specified segments
-                    creditCardNumber += random.nextInt(10).toString();
-                  } else {
-                    // Use 'x' for other segments
-                    creditCardNumber += 'x';
-                  }
-                  if (i == 8 || i == 12) {
-                    // Add a space after the 8th and 12th character
-                    creditCardNumber += ' ';
-                  }
-                }
                 print(creditCardNumber);
 
                 return creditCardNumber;
@@ -94,6 +99,8 @@ class Page1 extends StatelessWidget {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () async {
+                creditCardNumber = generateRandomCreditCardNumber();
+                // .substring(1);
                 User1 s1 = User1(
                     name: _usernameController.text,
                     password: _passwordController.text,
@@ -102,6 +109,8 @@ class Page1 extends StatelessWidget {
                     email: _emailController.text,
                     creditCardNumber: creditCardNumber);
                 await Database().insertUser(s1);
+                await Database().insertAccounts(s1);
+
                 // await Database().getAllUsers();
                 print(creditCardNumber);
               },

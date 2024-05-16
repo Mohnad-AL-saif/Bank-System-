@@ -24,16 +24,20 @@ class Database {
   static String cardNum2 = "";
   static String cardNum3 = "";
 
-  static var money1 = "";
-  static var money2 = "";
-  static var money3 = "";
+  static String money1 = "";
+  static String money2 = "";
+  static String money3 = "";
 
   static String beneficiary1 = "";
   static String beneficiary2 = "";
   static String beneficiary3 = "";
 
   Future<void> insertUser(User1 user) async {
-    await supabase.from('user').insert(user.toJson());
+    await supabase.from('user').insert(user.toJsonUs());
+  }
+
+  Future<void> insertAccounts(User1 user) async {
+    await supabase.from('Accounts').insert(user.toJsonAc());
   }
 
   Future<List<User1>> getSpecificUser(
@@ -64,16 +68,16 @@ class Database {
 
     if (response.isNotEmpty) {
       id1 = response[0]['ID'] ?? "";
-      id2 = response.length > 1 ? response[1]['ID'] ?? "" : "";
-      id3 = response.length > 2 ? response[2]['ID'] ?? "" : "";
+      // id2 = response.length > 1 ? response[1]['ID'] ?? "" : "";
+      // id3 = response.length > 2 ? response[2]['ID'] ?? "" : "";
 
       userId1 = response[0]['user_id'] ?? "";
-      userId2 = response.length > 1 ? response[1]['user_id'] ?? "" : "";
-      userId3 = response.length > 2 ? response[2]['user_id'] ?? "" : "";
+      // userId2 = response.length > 1 ? response[1]['user_id'] ?? "" : "";
+      // userId3 = response.length > 2 ? response[2]['user_id'] ?? "" : "";
 
-      iban1 = response[0]['iban'] ?? "";
-      iban2 = response.length > 1 ? response[1]['iban'] ?? "" : "";
-      iban3 = response.length > 2 ? response[2]['iban'] ?? "" : "";
+      // iban1 = response[0]['iban'] ?? "";
+      // iban2 = response.length > 1 ? response[1]['iban'] ?? "" : "";
+      // iban3 = response.length > 2 ? response[2]['iban'] ?? "" : "";
 
       cardNum1 = response[0]['CardNum'] ?? "";
       cardNum2 = response.length > 1 ? response[1]['CardNum'] ?? "" : "";
@@ -83,11 +87,11 @@ class Database {
       money2 = response.length > 1 ? response[1]['money'] ?? 0.0 : 0.0;
       money3 = response.length > 2 ? response[2]['money'] ?? 0.0 : 0.0;
 
-      beneficiary1 = response[0]['Beneficiary'] ?? "";
-      beneficiary2 =
-          response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";
-      beneficiary3 =
-          response.length > 2 ? response[2]['Beneficiary'] ?? "" : "";
+      // beneficiary1 = response[0]['Beneficiary'] ?? "";
+      // beneficiary2 =
+      //     response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";
+      // beneficiary3 =
+      // response.length > 2 ? response[2]['Beneficiary'] ?? "" : "";
     }
 
     List<User1> accounts = (response as List<dynamic>)
