@@ -1,3 +1,4 @@
+//--------------------------------------------------------------------------------------
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
@@ -241,8 +242,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             Database().getAccount(id: idNumberController.text);
 
                             if (result.isNotEmpty) {
-                              Database()
-                                  .getAccount(id: idNumberController.text);
+                              // Database()
+                              // .getAccount(id: idNumberController.text);
 
                               Navigator.push(
                                 // ignore: use_build_context_synchronously

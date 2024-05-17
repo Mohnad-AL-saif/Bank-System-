@@ -24,9 +24,9 @@ class Database {
   static String cardNum2 = "";
   static String cardNum3 = "";
 
-  static String money1 = "";
-  static String money2 = "";
-  static String money3 = "";
+  static double money1 = 0.0;
+  static double money2 = 0.0;
+  static double money3 = 0.0;
 
   static String beneficiary1 = "";
   static String beneficiary2 = "";
@@ -83,10 +83,14 @@ class Database {
       cardNum2 = response.length > 1 ? response[1]['CardNum'] ?? "" : "";
       cardNum3 = response.length > 2 ? response[2]['CardNum'] ?? "" : "";
 
-      money1 = response[0]['money'] ?? 0.0;
-      money2 = response.length > 1 ? response[1]['money'] ?? 0.0 : 0.0;
-      money3 = response.length > 2 ? response[2]['money'] ?? 0.0 : 0.0;
+      money1 = double.tryParse(response[0]['money'] ?? '0.0');
+      money2 = double.tryParse(response[1]['money']);
+      money3 = double.tryParse(response[2]['money'] ?? '0.0')!;
+      print(response);
 
+      print(money1);
+      print(money2);
+      print(money3);
       // beneficiary1 = response[0]['Beneficiary'] ?? "";
       // beneficiary2 =
       //     response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";

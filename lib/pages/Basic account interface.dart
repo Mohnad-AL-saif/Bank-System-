@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class InterfaceForSavingsAccount extends StatelessWidget {
+class BasicAccountInterface extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Savings Account'), 
+        title: Text('Basic Account'), 
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset('assets/images_card/Credit_Card_Platinum_Touch.png'), // Placeholder image for the basic account card
+            Image.asset('assets/images_card/card_mada_alinma.png'), // Placeholder image for the basic account card
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
