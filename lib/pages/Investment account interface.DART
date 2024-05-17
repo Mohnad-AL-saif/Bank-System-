@@ -9,17 +9,34 @@ class InvestmentAccountInterface extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              width: 500,
-              height: 350, // Set the desired height
-              child: Image.asset(
-                'assets/images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
-                // fit: BoxFit.cover, // Adjust the image to cover the container
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    Stack(
+      children: [
+        Container(
+          width: 500,
+          height: 350,
+          child: Image.asset(
+            'assets/images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
+                                      fit: BoxFit.fill, // Adjust the image to cover the container
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 10,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'name: ',
+                style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
               ),
-            ),
-            SizedBox(height: 100),
+            ],
+          ),
+        ),
+      ],
+    ),
+    SizedBox(height: 100),
             Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,

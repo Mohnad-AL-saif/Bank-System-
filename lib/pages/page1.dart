@@ -99,21 +99,68 @@ class Page1 extends StatelessWidget {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () async {
-                creditCardNumber = generateRandomCreditCardNumber();
-                // .substring(1);
-                User1 s1 = User1(
+                try {
+                  // توليد رقم بطاقة ائتمان عشوائي
+                  String creditCardNumber = generateRandomCreditCardNumber();
+
+                  // إنشاء كائن مستخدم جديد باستخدام القيم المدخلة
+                  User1 s1 = User1(
                     name: _usernameController.text,
                     password: _passwordController.text,
                     id: _idNumberController.text,
                     phoneNumber: _phoneNumberController.text,
                     email: _emailController.text,
-                    creditCardNumber: creditCardNumber);
-                await Database().insertUser(s1);
-                await Database().insertAccounts(s1);
+                    creditCardNumber: creditCardNumber,
+                  );
 
-                // await Database().getAllUsers();
-                print(creditCardNumber);
+                  // التحقق من وجود المستخدم في قاعدة البيانات
+                  var result = await Database().getSpecificUser(
+                    password: _passwordController.text,
+                    idNumber: _idNumberController.text,
+                  );
+
+                  // التحقق من أن النتيجة ليست فارغة
+                  if (result.isEmpty) {
+                    await Database().insertUser(s1);
+                    await Database().insertAccount(s1);
+                    // يمكنك إضافة رسالة نجاح هنا
+                    print("User registered2 successfully");
+                  } else {
+                    // await Database().updateAccount(
+                    //     'b00101dc-5b3e-4688-854a-d0824735f188', 1000.5, "3mk");
+                    await Database().insertAccount(s1);
+                    // يمكنك إضافة رسالة توضح أن المستخدم موجود بالفعل وتم تحديثه
+                    print("User registered1 successfully");
+                  }
+                } catch (e) {
+                  // التعامل مع الأخطاء
+                  print("An error occurred: $e");
+                }
               },
+              //   creditCardNumber = generateRandomCreditCardNumber();
+              //   // .substring(1);
+              //   User1 s1 = User1(
+              //       name: _usernameController.text,
+              //       password: _passwordController.text,
+              //       id: _idNumberController.text,
+              //       phoneNumber: _phoneNumberController.text,
+              //       email: _emailController.text,
+              //       creditCardNumber: creditCardNumber);
+
+              //   // التحقق من وجود المستخدم في قاعدة البيانات
+              //   var result = await Database().getSpecificUser(
+              //     password: _passwordController.text,
+              //     idNumber: _idNumberController.text,
+              //   );
+
+              //   // إذا لم يكن المستخدم موجودًا، إدخاله في قاعدة البيانات
+              //   if (result.isEmpty) {
+              //     await Database().insertUser(s1);
+              //     await Database().insertAccounts(s1);
+              //   } else {
+              //     await Database().insertAccounts(s1);
+              //   }
+              // },
               child: const Text('Submit'),
             ),
           ],

@@ -2,7 +2,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/choose_an_account.dart';
+import 'package:flutter_application_1/pages/log%20in.dart';
 import 'package:flutter_application_1/pages/page1.dart';
 import 'package:flutter_application_1/services/databace.dart';
 import 'package:flutter_application_1/utils/animations.dart';
@@ -20,6 +20,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController idNumberController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String x = '70dcfdee-72ff-4ad2-bf4b-ef24976aa054';
+  // String x = '123';
 
   void _createAccount() {
     Navigator.push(
@@ -240,6 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             );
                             // Database().etspecificuseraccounts;
                             Database().getAccount(id: idNumberController.text);
+                            Database().updateAccount('$x', 1000.5, "3mk");
 
                             if (result.isNotEmpty) {
                               // Database()
@@ -249,7 +252,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // ignore: use_build_context_synchronously
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => ChooseAnAccount(),
+                                  builder: (context) => MyApp(),
                                   // Page3(),
                                 ),
                               );

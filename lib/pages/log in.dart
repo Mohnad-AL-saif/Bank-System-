@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
+import 'package:flutter_application_1/pages/Interface%20for%20savings%20account.dart';
+import 'package:flutter_application_1/pages/Investment%20account%20interface.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
 class MyApp extends StatelessWidget {
@@ -31,91 +34,105 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   String _button2Text = 'Button 2';
   // ignore: unused_field
   String _button3Text = 'Button 3';
-  static String ChooseAnAccountState_nameOfFirstPerson =
-      Database.nameOfFirstPerson;
-  static String ChooseAnAccountState_id1 = Database.id1;
-  // static String ChooseAnAccountState_id2 = Database.id2;
-  // static String ChooseAnAccountState_id3 = Database.id3;
-  static String ChooseAnAccountState_userId1 = Database.userId1;
-  // static String ChooseAnAccountState_userId2 = Database.userId2;
-  // static String ChooseAnAccountState_userId3 = Database.userId3;
-  // static String ChooseAnAccountState_iban1 = Database.iban1;
-  // static String ChooseAnAccountState_iban2 = Database.iban2;
-  // static String ChooseAnAccountState_iban3 = Database.iban3;
-  static String ChooseAnAccountState_cardNum1 = Database.cardNum1;
-  static String ChooseAnAccountState_cardNum2 = Database.cardNum2;
-  static String ChooseAnAccountState_cardNum3 = Database.cardNum3;
-  static double ChooseAnAccountState_money1 = Database.money1;
-  static double ChooseAnAccountState_money2 = Database.money2;
-  static double ChooseAnAccountState_money3 = Database.money3;
-  // static String ChooseAnAccountState_beneficiary1 = Database.beneficiary1;
-  // static String ChooseAnAccountState_beneficiary2 = Database.beneficiary2;
-  // static String ChooseAnAccountState_beneficiary3 = Database.beneficiary3;
+  static String nameOfFirstPerson = Database.nameOfFirstPerson;
+  static String id1 = Database.id1;
+  // static String id2 = Database.id2;
+  // static String id3 = Database.id3;
+  static String userId1 = Database.userId1;
+  // static String userId2 = Database.userId2;
+  // static String userId3 = Database.userId3;
+  // static String iban1 = Database.iban1;
+  // static String iban2 = Database.iban2;
+  // static String iban3 = Database.iban3;
+  static String cardNum1 = Database.cardNum1;
+  static String cardNum2 = Database.cardNum2;
+  static String CcardNum3 = Database.cardNum3;
+  static double money1 = Database.money1;
+  static double money2 = Database.money2;
+  static double money3 = Database.money3;
+  // static String beneficiary1 = Database.beneficiary1;
+  // static String beneficiary2 = Database.beneficiary2;
+  // static String beneficiary3 = Database.beneficiary3;
 
   void _updateName() {
     setState(() {
-      ChooseAnAccountState_nameOfFirstPerson = Database.nameOfFirstPerson;
-      ChooseAnAccountState_id1 = Database.id1;
-      // ChooseAnAccountState_id2 = Database.id2;
-      // ChooseAnAccountState_id3 = Database.id3;
-      ChooseAnAccountState_userId1 = Database.userId1;
-      // ChooseAnAccountState_userId2 = Database.userId2;
-      // ChooseAnAccountState_userId3 = Database.userId3;
-      // ChooseAnAccountState_iban1 = Database.iban1;
-      // ChooseAnAccountState_iban2 = Database.iban2;
-      // ChooseAnAccountState_iban3 = Database.iban3;
-      ChooseAnAccountState_cardNum1 = Database.cardNum1;
-      ChooseAnAccountState_cardNum2 = Database.cardNum2;
-      ChooseAnAccountState_cardNum3 = Database.cardNum3;
-      ChooseAnAccountState_money1 = Database.money1;
-      ChooseAnAccountState_money2 = Database.money2;
-      ChooseAnAccountState_money3 = Database.money3;
-      // ChooseAnAccountState_beneficiary1 = Database.beneficiary1;
-      // ChooseAnAccountState_beneficiary2 = Database.beneficiary2;
-      // ChooseAnAccountState_beneficiary3 = Database.beneficiary3;
-      print(ChooseAnAccountState_money1);
+      nameOfFirstPerson = Database.nameOfFirstPerson;
+      id1 = Database.id1;
+      // id2 = Database.id2;
+      // id3 = Database.id3;
+      userId1 = Database.userId1;
+      // userId2 = Database.userId2;
+      // userId3 = Database.userId3;
+      // iban1 = Database.iban1;
+      // iban2 = Database.iban2;
+      // iban3 = Database.iban3;
+      cardNum1 = Database.cardNum1;
+      cardNum2 = Database.cardNum2;
+      CcardNum3 = Database.cardNum3;
+      money1 = Database.money1;
+      money2 = Database.money2;
+      money3 = Database.money3;
+      // beneficiary1 = Database.beneficiary1;
+      // beneficiary2 = Database.beneficiary2;
+      // beneficiary3 = Database.beneficiary3;
+      print(money1);
       print(Database.money2);
-      print(ChooseAnAccountState_money3);
+      print(money3);
 
-      print(ChooseAnAccountState_id1);
+      print(id1);
     });
   }
 
   void _updateButton1() {
     setState(() {
-      _button1Text = 'Button 1 Pressed';
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => BasicAccountInterface(),
+        ),
+      );
+      _button3Text = 'Button 3 Pressed';
     });
   }
 
   void _updateButton2() {
     setState(() {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => InterfaceForSavingsAccount(),
+        ),
+      );
       _button2Text = 'Button 2 Pressed';
     });
   }
 
   void _updateButton3() {
     setState(() {
-      _button3Text = 'Button 3 Pressed';
+      // Database()
+      //     .updateAccount('cc890bff-63f4-44d2-967e-21d6797486fc', 1000.5, "3mk");
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => InvestmentAccountInterface(),
+        ),
+      );
+      _button1Text = 'Button 1 Pressed';
     });
   }
 
-  /*Text(
-                            '$ChooseAnAccountState_nameOfFirstPerson\n User ID: $ChooseAnAccountState_userId1 \n Card Number: $ChooseAnAccountState_cardNum1\n Money: $ChooseAnAccountState_money2\n',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-*/
   void _resetAllButtons() {
     setState(() {
-      ChooseAnAccountState_nameOfFirstPerson = ' 1';
-      ChooseAnAccountState_userId1 = ' 2';
-      ChooseAnAccountState_money1 = 0.0;
-      ChooseAnAccountState_cardNum1 = ' 3';
+      nameOfFirstPerson = ' 1';
+      userId1 = ' 2';
+      money1 = 0.0;
+      cardNum1 = ' 3';
 
-      ChooseAnAccountState_money2 = 0.0;
-      ChooseAnAccountState_cardNum2 = ' 3';
+      money2 = 0.0;
+      cardNum2 = ' 3';
 
-      ChooseAnAccountState_money3 = 0.0;
-      ChooseAnAccountState_cardNum3 = ' 3';
+      money3 = 0.0;
+      CcardNum3 = ' 3';
       print(Database.money2);
     });
   }
@@ -251,21 +268,18 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'name: $ChooseAnAccountState_nameOfFirstPerson\n User ID: $ChooseAnAccountState_userId1 \n Card Number: $ChooseAnAccountState_cardNum1 \n Money: $ChooseAnAccountState_money1 \n',
+                            'name: $nameOfFirstPerson\n User ID: $userId1 \n Card Number: $cardNum1 \n Money: $money1 \n',
                             style: const TextStyle(color: Colors.white),
                           ),
 
                           // Text(
-                          //   'User ID: $ChooseAnAccountState_userId1 \n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Card Number: $ChooseAnAccountState_cardNum1\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Money: $ChooseAnAccountState_money2\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   hjghjhj
                           // ),
                         ],
                       ),
@@ -308,20 +322,17 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            '\nname: $ChooseAnAccountState_nameOfFirstPerson\n User ID: $ChooseAnAccountState_userId1 \n Card Number: $ChooseAnAccountState_cardNum2\n Money: $ChooseAnAccountState_money2\n',
+                            '\nname: $nameOfFirstPerson\n User ID: $userId1 \n Card Number: $cardNum2\n Money: $money2\n',
                             style: const TextStyle(color: Colors.white),
                           ),
                           // Text(
-                          //   'User ID: $ChooseAnAccountState_userId2 \n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Card Number: $ChooseAnAccountState_cardNum2\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Money: $ChooseAnAccountState_money2\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   hjghjhj
                           // ),
                         ],
                       ),
@@ -330,7 +341,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                       width: 500,
                       height: 350,
                       child: ElevatedButton(
-                        onPressed: _updateButton1,
+                        onPressed: _updateButton2,
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               Colors.transparent, // لجعل الخلفية شفافة
@@ -364,20 +375,17 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'name: $ChooseAnAccountState_nameOfFirstPerson\n User ID: $ChooseAnAccountState_userId1 \n Card Number: $ChooseAnAccountState_cardNum3\n Money: $ChooseAnAccountState_money3\n',
+                            'name: $nameOfFirstPerson\n User ID: $userId1 \n Card Number: $CcardNum3\n Money: $money3\n',
                             style: const TextStyle(color: Colors.white),
                           ),
                           // Text(
-                          //   'User ID: $ChooseAnAccountState_userId3 \n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Card Number: $ChooseAnAccountState_cardNum3\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   'hgjjg'
                           // ),
                           // Text(
-                          //   'Money: $ChooseAnAccountState_money3\n',
-                          //   style: const TextStyle(color: Colors.white),
+                          //   hjghjhj
                           // ),
                         ],
                       ),
@@ -386,7 +394,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                       width: 500,
                       height: 350,
                       child: ElevatedButton(
-                        onPressed: _updateButton1,
+                        onPressed: _updateButton3,
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
                               Colors.transparent, // لجعل الخلفية شفافة

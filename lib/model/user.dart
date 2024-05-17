@@ -5,12 +5,15 @@ class User1 {
   String? phoneNumber;
   String? password;
   String? creditCardNumber;
+  String? money;
+
   User1(
       {this.id,
       this.name,
       this.email,
       this.phoneNumber,
       this.password,
+      this.money,
       this.creditCardNumber});
 
   factory User1.fromJson(Map<String, dynamic> json) {
@@ -36,6 +39,14 @@ class User1 {
   }
 
   Map<String, dynamic> toJsonAc() {
+    return {
+      "user_id": id,
+      "password": password,
+      "CardNumber": creditCardNumber,
+    };
+  }
+
+  Map<String, dynamic> toJsonAcs() {
     return {
       "user_id": id,
       "password": password,

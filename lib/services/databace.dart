@@ -31,13 +31,15 @@ class Database {
   static String beneficiary1 = "";
   static String beneficiary2 = "";
   static String beneficiary3 = "";
+  // static String accountId = "70dcfdee-72ff-4ad2-bf4b-ef24976aa054";
+  // static double amount = 0.0;
 
   Future<void> insertUser(User1 user) async {
     await supabase.from('user').insert(user.toJsonUs());
   }
 
-  Future<void> insertAccounts(User1 user) async {
-    await supabase.from('Accounts').insert(user.toJsonAc());
+  Future<void> insertAccount(User1 user) async {
+    await supabase.from('Account').insert(user.toJsonAc());
   }
 
   Future<List<User1>> getSpecificUser(
@@ -46,25 +48,56 @@ class Database {
         .from("user")
         .select()
         .match({"id": idNumber, "password": password});
-    print("---------------------------------------");
-    nameOfFirstPerson = data[0]['names'];
-    nameOfSecondPerson = data.length > 1 ? data[1]['names'] : "";
-    nameOfThirdPerson = data.length > 2 ? data[2]['names'] : "";
-    // final User? user = data.user;
-    print(nameOfFirstPerson);
+    if (data.isNotEmpty) {
+      print("---------------------------------------");
+      nameOfFirstPerson = data[0]['names'];
+      nameOfSecondPerson = data.length > 1 ? data[1]['names'] : "";
+      nameOfThirdPerson = data.length > 2 ? data[2]['names'] : "";
+      // final User? user = data.user;
+      print(nameOfFirstPerson);
 
-    print(data);
-    print("---------------------------------------");
+      print(data);
+      print("---------------------------------------"); // Database()
+      // .getAccount(id: idNumberController.text);
+    }
 
     List<User1> users = (data as List<dynamic>)
         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
         .toList();
     return users;
   }
+//-------------------------------------------------------------------
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Future<void> updateAccount(
+    String? accountId,
+    double amount,
+    String? amount1,
+  ) async {
+    try {
+      final response = await supabase
+          .from('Account') // تأكد من اسم الجدول الصحيح
+          // .from('user') // تأكد من اسم الجدول الصحيح
+
+          .update({
+        'money': amount.toString(),
+        'Beneficiary': amount1,
+
+        // 'phone': amount,
+      }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
+
+      if (response.error != null) {
+        throw Exception('Failed to update account: ${response.error!.message}');
+      } else {
+        print('Account updated successfully');
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
+  }
 
   Future<List<User1>> getAccount({required String id}) async {
-    final response = await supabase.from('Accounts').select().eq('user_id', id);
+    final response = await supabase.from('Account').select().eq('user_id', id);
 
     if (response.isNotEmpty) {
       id1 = response[0]['ID'] ?? "";
@@ -79,18 +112,18 @@ class Database {
       // iban2 = response.length > 1 ? response[1]['iban'] ?? "" : "";
       // iban3 = response.length > 2 ? response[2]['iban'] ?? "" : "";
 
-      cardNum1 = response[0]['CardNum'] ?? "";
-      cardNum2 = response.length > 1 ? response[1]['CardNum'] ?? "" : "";
-      cardNum3 = response.length > 2 ? response[2]['CardNum'] ?? "" : "";
+      cardNum1 = response[0]['CardNumber'] ?? "";
+      cardNum2 = response[1]['CardNumber'] ?? "";
+      cardNum3 = response[2]['CardNumber'] ?? "";
 
-      money1 = double.tryParse(response[0]['money'] ?? '0.0');
-      money2 = double.tryParse(response[1]['money']);
+      money1 = double.tryParse(response[0]['money'] ?? '0.0')!;
+      money2 = double.tryParse(response[1]['money'] ?? '0.0')!;
       money3 = double.tryParse(response[2]['money'] ?? '0.0')!;
       print(response);
 
-      print(money1);
-      print(money2);
-      print(money3);
+      print(cardNum1);
+      print(cardNum2);
+      print(cardNum3);
       // beneficiary1 = response[0]['Beneficiary'] ?? "";
       // beneficiary2 =
       //     response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";
