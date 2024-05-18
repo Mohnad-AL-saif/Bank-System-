@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Database {
   final supabase = Supabase.instance.client;
+  String Basicmoney1 = "";
 
   static String nameOfThirdPerson = "";
   static String nameOfSecondPerson = "";
@@ -106,7 +107,8 @@ class Database {
         // 'Beneficiary': amount1,
 
         // 'phone': amount,
-      }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
+        // }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
+      }).eq('CardNumber', accountId!); // تأكد من اسم العمود الصحيح
 
       if (response.error != null) {
         throw Exception('Failed to update account: ${response.error!.message}');
@@ -117,6 +119,41 @@ class Database {
       print('An error occurred: $e');
     }
   }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Future<void> updateAddMoneyAccount(
+    String? accountId,
+    String amount,
+    // String? amount1,
+  ) async {
+    try {
+      final response = await supabase
+          .from('Account') // تأكد من اسم الجدول الصحيح
+          // .from('user') // تأكد من اسم الجدول الصحيح
+
+          .update({
+        'money': amount.toString(),
+        // 'Beneficiary': amount1,
+
+        // 'phone': amount,
+        // }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
+      }).eq('CardNumber', accountId!); // تأكد من اسم العمود الصحيح
+
+      if (response.error != null) {
+        throw Exception('Failed to update account: ${response.error!.message}');
+      } else {
+        print('Account updated successfully');
+      }
+    } catch (e) {
+      print('An error occurred: $e');
+    }
+  }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Future<List<User1>> getAccount({required String id}) async {
     final response = await supabase.from('Account').select().eq('user_id', id);
@@ -163,8 +200,23 @@ class Database {
 
     return accounts;
   }
-}
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  Future<List<User1>> getSpecificMoneyAccount1({String? idNumber}) async {
+    // تنفيذ الاستعلام للحصول على البيانات
+    // استبدال هذا الجزء بالكود الفعلي الذي يجلب البيانات
+    final response =
+        await supabase.from("Account").select().match({"ID": idNumber});
+    // await someDatabaseCall(idNumber);
+    print(response);
+
+    // تحويل البيانات إلى قائمة من كائنات User1
+    return money1 = response[0]['money'];
+  }
+}
+
+
 
 //   Future<List<User1>> getAccount({required String id}) async {
 //     // Assume 'Accounts' is a table, adjust based on your actual storage structure

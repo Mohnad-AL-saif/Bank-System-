@@ -631,7 +631,7 @@ class _Transfer1State extends State<Transfer1> {
   final TextEditingController _recipientCardNumberController =
       TextEditingController();
   final TextEditingController _amountController = TextEditingController();
-  String total = '';
+  static String total = '';
   String _recipientCardNumber = '';
   double? _amount = 0.0;
   static String money1String = Database.money1;
@@ -670,13 +670,14 @@ class _Transfer1State extends State<Transfer1> {
     _amount = double.tryParse(_amountController.text);
 
     if (_amount != null) {
+      _updateName();
       if (money1 > _amount!) {
         total = (money1 + _amount!).toString();
         print('Total after addition: $total');
 
         await Database().updateAccount(_recipientCardNumber, total);
 
-        await _updateName();
+        // await _updateName();
         print('Updated amount in database: $MoneyAccount1');
       } else {
         print('money1 is not greater than _amount');
@@ -716,7 +717,7 @@ class _Transfer1State extends State<Transfer1> {
             ElevatedButton(
               onPressed: () async {
                 await _transferMoney();
-                await _updateName();
+                // await _updateName();
                 _navigateToTransfer();
                 print('Transfer button pressed');
                 print(
