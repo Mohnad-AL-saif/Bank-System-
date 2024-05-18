@@ -616,6 +616,7 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
 class Transfer1 extends StatefulWidget {
@@ -637,6 +638,15 @@ class _Transfer1State extends State<Transfer1> {
   static double money1 = double.tryParse(money1String) ?? 0.0;
   String x = "";
   double MoneyAccount1 = double.tryParse(money1String) ?? 0.0;
+
+  void _navigateToTransfer() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => BasicAccountInterface(),
+      ),
+    );
+  }
 
   Future<void> _updateName() async {
     final money1Fetched = await Database.MoneyAccount1;
@@ -707,7 +717,7 @@ class _Transfer1State extends State<Transfer1> {
               onPressed: () async {
                 await _transferMoney();
                 await _updateName();
-
+                _navigateToTransfer();
                 print('Transfer button pressed');
                 print(
                     'Recipient Card Number: ${_recipientCardNumberController.text}');
