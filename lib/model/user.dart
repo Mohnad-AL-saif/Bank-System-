@@ -5,7 +5,7 @@ class User1 {
   String? phoneNumber;
   String? password;
   String? creditCardNumber;
-  String? money;
+  String? money = '700';
 
   User1(
       {this.id,
@@ -43,16 +43,17 @@ class User1 {
       "user_id": id,
       "password": password,
       "CardNumber": creditCardNumber,
+      "money": money,
     };
   }
 
-  Map<String, dynamic> toJsonAcs() {
-    return {
-      "user_id": id,
-      "password": password,
-      "CardNumber": creditCardNumber,
-    };
-  }
+  // Map<String, dynamic> toJsonAcs() {
+  //   return {
+  //     "user_id": id,
+  //     "password": password,
+  //     "CardNumber": creditCardNumber,
+  //   };
+  // }
 
   Map<String, dynamic> toJsonBeneficiary() {
     return {

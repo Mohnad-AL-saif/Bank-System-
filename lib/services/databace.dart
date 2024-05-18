@@ -24,15 +24,17 @@ class Database {
   static String cardNum2 = "";
   static String cardNum3 = "";
 
-  static double money1 = 0.0;
-  static double money2 = 0.0;
-  static double money3 = 0.0;
+  static String money1 = "";
+  static String money2 = "";
+  static String money3 = "";
+
+  static String MoneyAccount1 = "";
 
   static String beneficiary1 = "";
   static String beneficiary2 = "";
   static String beneficiary3 = "";
   // static String accountId = "70dcfdee-72ff-4ad2-bf4b-ef24976aa054";
-  // static double amount = 0.0;
+  // static String amount = 0.0;
 
   Future<void> insertUser(User1 user) async {
     await supabase.from('user').insert(user.toJsonUs());
@@ -66,13 +68,33 @@ class Database {
         .toList();
     return users;
   }
+
 //-------------------------------------------------------------------
+  Future<List<User1>> getSpecificMoneyAccount(
+      {required String idNumber}) async {
+    final data =
+        await supabase.from("Account").select().match({"ID": idNumber});
+    if (data.isNotEmpty) {
+      print("---------------------------------------");
+      MoneyAccount1 = data[0]['money'];
+      // final User? user = data.user;
+
+      print(data);
+      print("---------------------------------------"); // Database()
+      // .getAccount(id: idNumberController.text);
+    }
+
+    List<User1> users = (data as List<dynamic>)
+        .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
+        .toList();
+    return users;
+  }
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   Future<void> updateAccount(
     String? accountId,
-    double amount,
-    String? amount1,
+    String amount,
+    // String? amount1,
   ) async {
     try {
       final response = await supabase
@@ -81,7 +103,7 @@ class Database {
 
           .update({
         'money': amount.toString(),
-        'Beneficiary': amount1,
+        // 'Beneficiary': amount1,
 
         // 'phone': amount,
       }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
@@ -116,14 +138,18 @@ class Database {
       cardNum2 = response[1]['CardNumber'] ?? "";
       cardNum3 = response[2]['CardNumber'] ?? "";
 
-      money1 = double.tryParse(response[0]['money'] ?? '0.0')!;
-      money2 = double.tryParse(response[1]['money'] ?? '0.0')!;
-      money3 = double.tryParse(response[2]['money'] ?? '0.0')!;
+      money1 = response[0]['money'];
+      money2 = response[1]['money'];
+      money3 = response[2]['money'];
+
+      // String.tryParse(
+// String.tryParse(
+// String.tryParse(
       print(response);
 
-      print(cardNum1);
-      print(cardNum2);
-      print(cardNum3);
+      print(money1);
+      print(money2);
+      print(money3);
       // beneficiary1 = response[0]['Beneficiary'] ?? "";
       // beneficiary2 =
       //     response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";

@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/money1.dart';
 import 'package:flutter_application_1/pages/Transfer_1.dart';
+import 'package:flutter_application_1/services/databace.dart';
+
 class BasicAccountInterface extends StatefulWidget {
   @override
   _BasicAccountInterfaceState createState() => _BasicAccountInterfaceState();
 }
 
 class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
+  final nameOfFirstPerson =  Database.nameOfFirstPerson;
+    final id1 =  Database.id1;
+    final cardNum1 =  Database.cardNum1;
+    final ChooseAnAccount_money1 =  Database.money1;
+    final userId1 = Database.userId1;
+  
+
   void _navigateToTransfer() {
     Navigator.push(
       context,
@@ -35,13 +44,28 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: 500,
-              height: 350, // Set the desired height
-              child: Image.asset(
-                'assets/images_card/card_mada_alinma.png',
-                // fit: BoxFit.cover, // Adjust the image to cover the container
-              ),
+            Stack(
+              children: [
+                Container(
+                  width: 500,
+                  height: 350, // Set the desired height
+                  child: Image.asset(
+                    'assets/images_card/card_mada_alinma.png',
+                    fit: BoxFit.fill, // Adjust the image to cover the container
+                  ),
+                ),
+                Positioned(
+                  bottom : 10,
+                  left: 10,
+                  child: Text(
+                      'name: $nameOfFirstPerson\n User ID: $userId1 \n Card Number: $cardNum1 \n Money: $ChooseAnAccount_money1 \n',                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: 100),
             Row(
