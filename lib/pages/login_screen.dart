@@ -149,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       )),
                       const Spacer(),
                       const Text(
-                        "id num ",
+                        "National ID",
                         style: TextStyle(
                           color: Colors.white,
                           // Add any other styles you need here

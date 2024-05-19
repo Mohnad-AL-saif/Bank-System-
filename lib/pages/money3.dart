@@ -4,31 +4,29 @@ import 'package:flutter_application_1/services/databace.dart';
 
 class AddMoney3 extends StatefulWidget {
   const AddMoney3({super.key});
-  static String money3 = Database.money3;
+  static String money1 = Database.money1;
 
   @override
-  _AddMoney3 createState() => _AddMoney3();
+  _Transfer12State createState() => _Transfer12State();
 }
 
-class _AddMoney3 extends State<AddMoney3> {
+class _Transfer12State extends State<AddMoney3> {
   final nameOfFirstPerson = Database.nameOfFirstPerson;
-  final id3 = Database.id3;
+  final id1 = Database.id1;
   final cardNum3 = Database.cardNum3;
-  // ignore: non_constant_identifier_names
-  String ChooseAnAccount_money3 = Database.money3;
-  final userId3 = Database.userId3;
+  String ChooseAnAccount_money1 = Database.money1;
+  final userId1 = Database.userId1;
 
   // final TextEditingController _recipientCardNumberController =
   //     TextEditingController();
-  final TextEditingController _amountController3 = TextEditingController();
-  static String total3 = '';
+  final TextEditingController _amountController = TextEditingController();
+  static String total = '';
   // String _recipientCardNumber = '';
-  double? _amount3 = 0.0;
-  static String money3String3 = Database.money3;
-  static double money3 = double.tryParse(money3String3) ?? 0.0;
-  String x3 = "";
-  // ignore: non_constant_identifier_names
-  double MoneyAccount1 = double.tryParse(money3String3) ?? 0.0;
+  double? _amount = 0.0;
+  static String money1String = Database.money1;
+  static double money1 = double.tryParse(money1String) ?? 0.0;
+  String x = "";
+  double MoneyAccount1 = double.tryParse(money1String) ?? 0.0;
 
   void _navigateToTransfer() {
     Navigator.push(
@@ -40,38 +38,38 @@ class _AddMoney3 extends State<AddMoney3> {
   }
 
   Future<void> _updateName() async {
-    final money3Fetched = await Database.MoneyAccount1;
+    final money1Fetched = await Database.MoneyAccount1;
     final xFetched = await Database.MoneyAccount1;
 
     await Database().getSpecificMoneyAccount(idNumber: cardNum3);
 
     setState(() {
-      money3String3 = money3Fetched;
-      money3 = double.tryParse(money3String3) ?? 0.0;
-      x3 = xFetched;
-      MoneyAccount1 = double.tryParse(x3) ?? 0.0;
+      money1String = money1Fetched;
+      money1 = double.tryParse(money1String) ?? 0.0;
+      x = xFetched;
+      MoneyAccount1 = double.tryParse(x) ?? 0.0;
     });
 
-    print("Fetched money3: $money3");
+    print("Fetched money1: $money1");
     print("Fetched MoneyAccount1: $MoneyAccount1");
   }
 
   Future<void> _transferMoney() async {
     // _recipientCardNumber = _recipientCardNumberController.text;
-    _amount3 = double.tryParse(_amountController3.text);
+    _amount = double.tryParse(_amountController.text);
 
-    if (_amount3 != null) {
+    if (_amount != null) {
       _updateName();
-      if (money3 > _amount3!) {
-        total3 = (money3 + _amount3!).toString();
-        print('Total after addition: $total3');
+      if (money1 > _amount!) {
+        total = (money1 + _amount!).toString();
+        print('Total after addition: $total');
 
-        await Database().updateAccount(cardNum3, total3);
+        await Database().updateAccount(cardNum3, total);
 
         // await _updateName();
         print('Updated amount in database: $MoneyAccount1');
       } else {
-        print('money3 is not greater than _amount3');
+        print('money1 is not greater than _amount');
       }
     } else {
       print('Invalid amount entered');
@@ -90,7 +88,7 @@ class _AddMoney3 extends State<AddMoney3> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: _amountController3,
+              controller: _amountController,
               decoration: const InputDecoration(
                 labelText: 'Add Money',
               ),
@@ -104,7 +102,7 @@ class _AddMoney3 extends State<AddMoney3> {
                 _navigateToTransfer();
                 print('Transfer button pressed');
                 print('Recipient Card Number: $cardNum3');
-                print('Amount to Transfer: ${_amountController3.text}');
+                print('Amount to Transfer: ${_amountController.text}');
               },
               child: const Text('Add Money'),
             ),

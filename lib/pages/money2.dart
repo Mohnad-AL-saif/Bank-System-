@@ -4,13 +4,13 @@ import 'package:flutter_application_1/services/databace.dart';
 
 class AddMoney2 extends StatefulWidget {
   const AddMoney2({super.key});
-  static String money2 = Database.money2;
+  static String money1 = Database.money1;
 
   @override
-  _Transfer2State createState() => _Transfer2State();
+  _Transfer12State createState() => _Transfer12State();
 }
 
-class _Transfer2State extends State<AddMoney2> {
+class _Transfer12State extends State<AddMoney2> {
   final nameOfFirstPerson = Database.nameOfFirstPerson;
   final id2 = Database.id2;
   final cardNum2 = Database.cardNum2;
@@ -19,14 +19,14 @@ class _Transfer2State extends State<AddMoney2> {
 
   // final TextEditingController _recipientCardNumberController =
   //     TextEditingController();
-  final TextEditingController _mamount2Controller = TextEditingController();
-  static String mtotal2 = '';
+  final TextEditingController _amountController = TextEditingController();
+  static String total = '';
   // String _recipientCardNumber = '';
-  double? _mamount2 = 0.0;
-  static String money2String3 = Database.money2;
-  static double money2 = double.tryParse(money2String3) ?? 0.0;
-  String x2 = "";
-  double MoneyAccount1 = double.tryParse(money2String3) ?? 0.0;
+  double? _amount = 0.0;
+  static String money2String = Database.money2 ?? "0.0";
+  static double money2 = double.tryParse(money2String) ?? 0.0;
+  String x = "";
+  double MoneyAccount2 = double.tryParse(money2String) ?? 0.0;
 
   void _navigateToTransfer() {
     Navigator.push(
@@ -39,40 +39,40 @@ class _Transfer2State extends State<AddMoney2> {
 
   Future<void> _updateName() async {
     final money2Fetched = await Database.MoneyAccount1;
-    final xFetched = await Database.MoneyAccount1;
+    final xFetched2 = await Database.MoneyAccount1;
 
     await Database().getSpecificMoneyAccount(idNumber: cardNum2);
 
     setState(() {
-      money2String3 = money2Fetched;
-      money2 = double.tryParse(money2String3) ?? 0.0;
-      x2 = xFetched;
-      MoneyAccount1 = double.tryParse(x2) ?? 0.0;
+      money2String = money2Fetched;
+      money2 = double.tryParse(money2String) ?? 0.0;
+      x = xFetched2;
+      MoneyAccount2 = double.tryParse(x) ?? 0.0;
     });
 
-    print("Fetched money2: $money2");
-    print("Fetched MoneyAccount1: $MoneyAccount1");
+    print("Fetched money1: $money2");
+    print("Fetched MoneyAccount1: $MoneyAccount2");
   }
 
   Future<void> _transferMoney() async {
     // _recipientCardNumber = _recipientCardNumberController.text;
-    _mamount2 = double.tryParse(_mamount2Controller.text);
+    _amount = double.tryParse(_amountController.text);
 
-    if (_mamount2 != null) {
+    if (_amount != null) {
       _updateName();
-      if (money2 > _mamount2!) {
-        mtotal2 = (money2 + _mamount2!).toString();
-        print('Total after addition: $mtotal2');
+      if (money2 > _amount!) {
+        total = (money2 + _amount!).toString();
+        print('Total after addition: $total');
 
-        await Database().updateAccount(cardNum2, mtotal2);
+        await Database().updateAccount(cardNum2, total);
 
         // await _updateName();
-        print('Updated mamount2 in database: $MoneyAccount1');
+        print('Updated amount in database: $MoneyAccount2');
       } else {
-        print('money2 is not greater than _mamount2');
+        print('money1 is not greater than _amount');
       }
     } else {
-      print('Invalid mamount2 entered');
+      print('Invalid amount entered');
     }
   }
 
@@ -88,7 +88,7 @@ class _Transfer2State extends State<AddMoney2> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-              controller: _mamount2Controller,
+              controller: _amountController,
               decoration: const InputDecoration(
                 labelText: 'Add Money',
               ),
@@ -102,7 +102,7 @@ class _Transfer2State extends State<AddMoney2> {
                 _navigateToTransfer();
                 print('Transfer button pressed');
                 print('Recipient Card Number: $cardNum2');
-                print('mAmount2 to Transfer: ${_mamount2Controller.text}');
+                print('Amount to Transfer: ${_amountController.text}');
               },
               child: const Text('Add Money'),
             ),

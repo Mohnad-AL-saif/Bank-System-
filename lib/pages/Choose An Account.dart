@@ -99,13 +99,16 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   String _button3Text = 'Button 3';
 
   static String nameOfFirstPerson = "";
-  static String id1 = "";
-  // static String id2 = "";
-  // static String id3 = "";
-  static String userId1 = "";
+  static String nameOfSecondPerson = "";
+  static String nameOfThirdPerson = "";
 
-  // static String userId2 = "";
-  // static String userId3 = "";
+  static String id1 = "";
+  static String id2 = "";
+  static String id3 = "";
+
+  static String userId1 = "";
+  static String userId2 = "";
+  static String userId3 = "";
   // static String iban1 = "";
   // static String iban2 = "";
   // static String iban3 = "";
@@ -128,19 +131,33 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   void _updateName() async {
     // اجلب البيانات من قاعدة البيانات أولاً
     final nameOfFirstPersonFetched = await Database.nameOfFirstPerson;
-    final id1Fetched = await Database.id1;
-    final cardNum1Fetched = await Database.cardNum1;
-    final cardNum2Fetched = await Database.cardNum2;
-    final cardNum3Fetched = await Database.cardNum3;
-    final money1Fetched = await Database.money1;
-    final money2Fetched = await Database.money2;
-    final money3Fetched = await Database.money3;
+    final nameOfSecondPersonFetched = await Database.nameOfSecondPerson;
+    final nameOfThirdPersonFetched = await Database.nameOfThirdPerson;
+
+    final id1Fetched = await Database.id1 ?? 'You don’t have an account';
+    final id2Fetched = await Database.id2 ?? 'You don’t have an account';
+    final id3Fetched = await Database.id3 ?? 'You don’t have an account';
+    final cardNum1Fetched =
+        await Database.cardNum1 ?? 'You don’t have an account';
+    final cardNum2Fetched =
+        await Database.cardNum2 ?? 'You don’t have an account';
+    final cardNum3Fetched =
+        await Database.cardNum3 ?? 'You don’t have an account';
+    final money1Fetched = await Database.money1 ?? 'You don’t have an account';
+    final money2Fetched = await Database.money2 ?? 'You don’t have an account';
+    final money3Fetched = await Database.money3 ?? 'You don’t have an account';
     final String userId1Fetched = await Database.userId1;
+    final String userId2Fetched = await Database.userId2;
+    final String userId3Fetched = await Database.userId3;
 
     // ثم استخدم setState لتحديث الحالة
     setState(() {
       nameOfFirstPerson = nameOfFirstPersonFetched;
+      nameOfSecondPerson = nameOfSecondPersonFetched;
+      nameOfThirdPerson = nameOfThirdPersonFetched;
       id1 = id1Fetched;
+      id2 = id2Fetched;
+      id3 = id3Fetched;
       cardNum1 = cardNum1Fetched;
       cardNum2 = cardNum2Fetched;
       cardNum3 = cardNum3Fetched;
@@ -148,6 +165,8 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       ChooseAnAccount_money2 = money2Fetched;
       ChooseAnAccount_money3 = money3Fetched;
       userId1 = userId1Fetched;
+      userId2 = userId2Fetched;
+      userId3 = userId3Fetched;
 
       print(ChooseAnAccount_money1);
       print(ChooseAnAccount_money2);
@@ -196,16 +215,16 @@ class _ButtonLayoutState extends State<ButtonLayout> {
 
   void _resetAllButtons() {
     setState(() {
-      nameOfFirstPerson = ' 1';
-      userId1 = ' 2';
-      cardNum2 = ' 3';
-      cardNum1 = ' 3';
+      nameOfFirstPerson = 'xxxx';
+      userId1 = 'xxxx';
+      cardNum2 = 'xxxx';
+      cardNum1 = 'xxxx';
 
-      ChooseAnAccount_money1 = '0.0';
-      ChooseAnAccount_money2 = '0.0';
-      ChooseAnAccount_money3 = '0.0';
+      ChooseAnAccount_money1 = 'xxxx';
+      ChooseAnAccount_money2 = 'xxxx';
+      ChooseAnAccount_money3 = 'xxxx';
 
-      cardNum3 = ' 3';
+      cardNum3 = 'xxxx';
       print(Database.money2);
     });
   }
@@ -216,7 +235,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage(
-              'assets/TEST background/images_BANKbackground.jpg'), // مسار الصورة
+              'assets/TEST background/RBI-compliance-cloud4c-webpage-1.webp'), // مسار الصورة
           fit: BoxFit.cover,
         ),
       ),
@@ -230,7 +249,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                 Column(
                   children: [
                     const Text(
-                      'sssssssssss information',
+                      'hide information',
                       style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 16,
@@ -245,7 +264,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                           decoration: const BoxDecoration(
                             image: DecorationImage(
                               image: AssetImage(
-                                  'show.png'), // اضهار المعلومات صوره
+                                  'money/pngwing.com.png'), // اضهار المعلومات صوره
                               fit: BoxFit.cover,
                             ),
                           ),

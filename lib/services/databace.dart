@@ -160,16 +160,12 @@ class Database {
 
     if (response.isNotEmpty) {
       id1 = response[0]['ID'] ?? "";
-      // id2 = response.length > 1 ? response[1]['ID'] ?? "" : "";
-      // id3 = response.length > 2 ? response[2]['ID'] ?? "" : "";
+      id2 = response.length > 1 ? response[1]['ID'] ?? "" : "";
+      id3 = response.length > 2 ? response[2]['ID'] ?? "" : "";
 
       userId1 = response[0]['user_id'] ?? "";
-      // userId2 = response.length > 1 ? response[1]['user_id'] ?? "" : "";
-      // userId3 = response.length > 2 ? response[2]['user_id'] ?? "" : "";
-
-      // iban1 = response[0]['iban'] ?? "";
-      // iban2 = response.length > 1 ? response[1]['iban'] ?? "" : "";
-      // iban3 = response.length > 2 ? response[2]['iban'] ?? "" : "";
+      userId2 = response.length > 1 ? response[1]['user_id'] ?? "" : "";
+      userId3 = response.length > 2 ? response[2]['user_id'] ?? "" : "";
 
       cardNum1 = response[0]['CardNumber'] ?? "";
       cardNum2 = response[1]['CardNumber'] ?? "";
