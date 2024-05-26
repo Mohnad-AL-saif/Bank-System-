@@ -10,7 +10,7 @@ class ChooseAnAccount extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('صفحة الأزرار'),
+          title: const Text('Choose An Account'),
           centerTitle: true,
         ),
         body: const ButtonLayout(),
