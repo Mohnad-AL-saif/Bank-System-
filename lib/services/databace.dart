@@ -25,6 +25,10 @@ class Database {
   static String cardNum2 = "";
   static String cardNum3 = "";
 
+  static String cardmoney1 = "";
+  static String cardmoney2 = "";
+  static String cardmoney3 = "";
+
   static String money1 = "";
   static String money2 = "";
   static String money3 = "";
@@ -175,6 +179,13 @@ class Database {
       money2 = response[1]['money'];
       money3 = response[2]['money'];
 
+      cardmoney1 = response[0]['money'];
+      cardmoney2 = response[1]['money'];
+      cardmoney3 = response[2]['money'];
+      print(cardmoney1);
+      print(cardmoney2);
+      print("3mk");
+      print(cardmoney3);
       // String.tryParse(
 // String.tryParse(
 // String.tryParse(

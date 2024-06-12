@@ -5,7 +5,7 @@ class User1 {
   String? phoneNumber;
   String? password;
   String? creditCardNumber;
-  String? money = '700';
+  String? money;
 
   User1(
       {this.id,
@@ -20,10 +20,11 @@ class User1 {
     return User1(
       id: json['id'],
       name: json['names'],
+      password: json['password'],
       email: json['email'],
       phoneNumber: json['phone'],
-      password: json['password'],
       creditCardNumber: json['creditCardNumber'],
+      // money: json['money'],
     );
   }
 

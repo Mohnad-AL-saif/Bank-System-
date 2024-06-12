@@ -23,7 +23,7 @@ class _Transfer12State extends State<AddMoney2> {
   static String total = '';
   // String _recipientCardNumber = '';
   double? _amount = 0.0;
-  static String money2String = Database.money2 ?? "0.0";
+  static String money2String = Database.money2;
   static double money2 = double.tryParse(money2String) ?? 0.0;
   String x = "";
   double MoneyAccount2 = double.tryParse(money2String) ?? 0.0;

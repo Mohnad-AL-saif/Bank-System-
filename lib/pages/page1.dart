@@ -1,8 +1,58 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/model/user.dart';
+import 'package:flutter_application_1/pages/login_screen.dart';
 import 'package:flutter_application_1/services/databace.dart';
+
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+
+void _showErrorDialog(BuildContext context, String message) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Error'),
+        content: Text(message),
+        backgroundColor: Colors.red,
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK', style: TextStyle(color: Colors.white)),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
+
+Future<void> _showSuccessDialog(BuildContext context, String message) async {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Success'),
+        content: Text(message),
+        backgroundColor: Colors.green,
+        actions: <Widget>[
+          TextButton(
+            child: const Text('OK', style: TextStyle(color: Colors.white)),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
+}
+
+//---------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------
 
 // ignore: must_be_immutable
 class Page1 extends StatelessWidget {
@@ -12,6 +62,7 @@ class Page1 extends StatelessWidget {
   final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   static String creditCardNumber = '';
+  static String regMoney = "0";
 
   Page1({super.key});
   Database databaseInstance = Database();
@@ -90,15 +141,26 @@ class Page1 extends StatelessWidget {
                   return 'Please enter a valid email address';
                 }
                 return null;
-                // ignore: dead_code
-                print(creditCardNumber);
-
-                return creditCardNumber;
               },
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () async {
+                // التحقق من المدخلات
+                if (_usernameController.text.isEmpty ||
+                    _passwordController.text.isEmpty ||
+                    _idNumberController.text.isEmpty ||
+                    _phoneNumberController.text.isEmpty ||
+                    _emailController.text.isEmpty) {
+                  _showErrorDialog(context, "Please fill out all fields");
+                  return; // الخروج من الدالة إذا كانت هناك حقول فارغة
+                }
+
+                if (!_emailController.text.contains('@')) {
+                  _showErrorDialog(context, "Please enter a valid email");
+                  return; // الخروج من الدالة إذا كان البريد الإلكتروني غير صالح
+                }
+
                 try {
                   // توليد رقم بطاقة ائتمان عشوائي
                   String creditCardNumber = generateRandomCreditCardNumber();
@@ -111,6 +173,7 @@ class Page1 extends StatelessWidget {
                     phoneNumber: _phoneNumberController.text,
                     email: _emailController.text,
                     creditCardNumber: creditCardNumber,
+                    money: regMoney,
                   );
 
                   // التحقق من وجود المستخدم في قاعدة البيانات
@@ -123,45 +186,39 @@ class Page1 extends StatelessWidget {
                   if (result.isEmpty) {
                     await Database().insertUser(s1);
                     await Database().insertAccount(s1);
-                    // يمكنك إضافة رسالة نجاح هنا
-                    print("User registered2 successfully");
+
+                    // إظهار رسالة منبثقة
+                    await _showSuccessDialog(
+                        context, "تم تسجيل المستخدم بنجاح");
+
+                    Navigator.push(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
                   } else {
-                    // await Database().updateAccount(
-                    //     'b00101dc-5b3e-4688-854a-d0824735f188', 1000.5, "3mk");
                     await Database().insertAccount(s1);
+
                     // يمكنك إضافة رسالة توضح أن المستخدم موجود بالفعل وتم تحديثه
-                    print("User registered1 successfully");
+                    await _showSuccessDialog(context,
+                        "The user already exists and a new account has been added to him");
+
+                    Navigator.push(
+                      // ignore: use_build_context_synchronously
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => LoginScreen(),
+                      ),
+                    );
                   }
                 } catch (e) {
                   // التعامل مع الأخطاء
-                  print("An error occurred: $e");
+                  _showErrorDialog(context, "لم يتم تسجيل المستخدم بنجاح");
                 }
               },
-              //   creditCardNumber = generateRandomCreditCardNumber();
-              //   // .substring(1);
-              //   User1 s1 = User1(
-              //       name: _usernameController.text,
-              //       password: _passwordController.text,
-              //       id: _idNumberController.text,
-              //       phoneNumber: _phoneNumberController.text,
-              //       email: _emailController.text,
-              //       creditCardNumber: creditCardNumber);
-
-              //   // التحقق من وجود المستخدم في قاعدة البيانات
-              //   var result = await Database().getSpecificUser(
-              //     password: _passwordController.text,
-              //     idNumber: _idNumberController.text,
-              //   );
-
-              //   // إذا لم يكن المستخدم موجودًا، إدخاله في قاعدة البيانات
-              //   if (result.isEmpty) {
-              //     await Database().insertUser(s1);
-              //     await Database().insertAccounts(s1);
-              //   } else {
-              //     await Database().insertAccounts(s1);
-              //   }
-              // },
-              child: const Text('Submit'),
+              child: const Text('Register'),
             ),
           ],
         ),
