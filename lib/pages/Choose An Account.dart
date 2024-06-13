@@ -59,28 +59,23 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   String _button3Text = 'Button 3';
 
   static String nameOfFirstPerson = "";
-  static String nameOfSecondPerson = "";
-  static String nameOfThirdPerson = "";
+  // static String nameOfSecondPerson = "";
+  // static String nameOfThirdPerson = "";
 
-  static String id1 = "";
-  static String id2 = "";
-  static String id3 = "";
+  // static String id1 = "";
+  // static String id2 = "";
+  // static String id3 = "";
 
   static String userId1 = "";
-  static String userId2 = "";
-  static String userId3 = "";
-  // static String iban1 = "";
-  // static String iban2 = "";
-  // static String iban3 = "";
+  // static String userId2 = "";
+  // static String userId3 = "";
+
   static String cardNum1 = "";
   static String cardNum2 = "";
   static String cardNum3 = "";
   static String ChooseAnAccount_money1 = "";
   static String ChooseAnAccount_money2 = "";
   static String ChooseAnAccount_money3 = "";
-  // static String beneficiary1 = "";
-  // static String beneficiary2 = "";
-  // static String beneficiary3 = "";
 
   @override
   void initState() {
@@ -95,12 +90,12 @@ class _ButtonLayoutState extends State<ButtonLayout> {
     ); // اجلب البيانات من قاعدة البيانات أولاً
     // اجلب البيانات من قاعدة البيانات أولاً
     final nameOfFirstPersonFetched = await Database.nameOfFirstPerson;
-    final nameOfSecondPersonFetched = await Database.nameOfSecondPerson;
-    final nameOfThirdPersonFetched = await Database.nameOfThirdPerson;
+    // final nameOfSecondPersonFetched = await Database.nameOfSecondPerson;
+    // final nameOfThirdPersonFetched = await Database.nameOfThirdPerson;
 //
-    final id1Fetched = await Database.id1;
-    final id2Fetched = await Database.id2;
-    final id3Fetched = await Database.id3;
+    // final id1Fetched = await Database.id1;
+    // final id2Fetched = await Database.id2;
+    // final id3Fetched = await Database.id3;
     //
     final cardNum1Fetched = await Database.cardNum1;
     final cardNum2Fetched = await Database.cardNum2;
@@ -111,18 +106,18 @@ class _ButtonLayoutState extends State<ButtonLayout> {
     final money3Fetched = await Database.money3;
     //
     final String userId1Fetched = await Database.userId1;
-    final String userId2Fetched = await Database.userId2;
-    final String userId3Fetched = await Database.userId3;
+    // final String userId2Fetched = await Database.userId2;
+    // final String userId3Fetched = await Database.userId3;
 
     // ثم استخدم setState لتحديث الحالة
     setState(() {
       nameOfFirstPerson = nameOfFirstPersonFetched;
-      nameOfSecondPerson = nameOfSecondPersonFetched;
-      nameOfThirdPerson = nameOfThirdPersonFetched;
+      // nameOfSecondPerson = nameOfSecondPersonFetched;
+      // nameOfThirdPerson = nameOfThirdPersonFetched;
       //
-      id1 = id1Fetched;
-      id2 = id2Fetched;
-      id3 = id3Fetched;
+      // id1 = id1Fetched;
+      // id2 = id2Fetched;
+      // id3 = id3Fetched;
       //
       cardNum1 = cardNum1Fetched;
       cardNum2 = cardNum2Fetched;
@@ -133,8 +128,8 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       ChooseAnAccount_money3 = money3Fetched;
       //
       userId1 = userId1Fetched;
-      userId2 = userId2Fetched;
-      userId3 = userId3Fetched;
+      // userId2 = userId2Fetched;
+      // userId3 = userId3Fetched;
 
       print(ChooseAnAccount_money1);
       print(ChooseAnAccount_money2);
