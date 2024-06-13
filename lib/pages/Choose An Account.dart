@@ -4,7 +4,16 @@ import 'package:flutter_application_1/pages/Interface%20for%20savings%20account.
 import 'package:flutter_application_1/pages/Investment%20account%20interface.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
+// ignore: must_be_immutable
 class ChooseAnAccount extends StatelessWidget {
+  final String loginid;
+  // final String loginpassword;
+
+  const ChooseAnAccount({
+    super.key,
+    required this.loginid,
+  });
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,14 +22,22 @@ class ChooseAnAccount extends StatelessWidget {
           title: const Text('Choose An Account'),
           centerTitle: true,
         ),
-        body: const ButtonLayout(),
+        body: ButtonLayout(
+          loginid: loginid,
+        ),
       ),
     );
   }
 }
 
 class ButtonLayout extends StatefulWidget {
-  const ButtonLayout({super.key});
+  final String loginid;
+  // final String loginpassword;
+
+  const ButtonLayout({
+    super.key,
+    required this.loginid,
+  });
 
   @override
   // ignore: library_private_types_in_public_api
@@ -28,6 +45,8 @@ class ButtonLayout extends StatefulWidget {
 }
 
 class _ButtonLayoutState extends State<ButtonLayout> {
+  // String x = LoginScreen.x;
+  String y = '';
   String money1String = "";
   String money2String = "";
   String money3String = "";
@@ -70,6 +89,10 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   }
 
   void _updateName() async {
+    await Database().getAccount(
+      id: widget.loginid,
+      // password: widget.loginpassword,
+    ); // اجلب البيانات من قاعدة البيانات أولاً
     // اجلب البيانات من قاعدة البيانات أولاً
     final nameOfFirstPersonFetched = await Database.nameOfFirstPerson;
     final nameOfSecondPersonFetched = await Database.nameOfSecondPerson;
@@ -117,7 +140,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       print(ChooseAnAccount_money2);
       print(ChooseAnAccount_money3);
       //
-      print(id1);
+      // print(id1);
     });
   }
 
@@ -171,7 +194,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       ChooseAnAccount_money3 = 'xxxx';
 
       cardNum3 = 'xxxx';
-      print(Database.money2);
+      // print(Database.money2);
     });
   }
 
@@ -239,7 +262,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
                 Column(
                   children: [
                     const Text(
-                      'Show information',
+                      'Show or Refresh information',
                       style: TextStyle(
                         color: Color.fromARGB(255, 255, 255, 255),
                         fontSize: 16,

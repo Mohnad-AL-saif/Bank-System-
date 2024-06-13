@@ -17,11 +17,11 @@ class _Transfer12State extends State<AddMoney2> {
   String ChooseAnAccount_money2 = Database.money2;
   final userId2 = Database.userId2;
 
-  // final TextEditingController _recipientCardNumberController =
-  //     TextEditingController();
+  String _recipientCardNumber = '';
+  final TextEditingController _recipientCardNumberController =
+      TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   static String total = '';
-  // String _recipientCardNumber = '';
   double? _amount = 0.0;
   static String money2String = Database.money2;
   static double money2 = double.tryParse(money2String) ?? 0.0;
@@ -55,9 +55,9 @@ class _Transfer12State extends State<AddMoney2> {
   }
 
   Future<void> _transferMoney() async {
-    // _recipientCardNumber = _recipientCardNumberController.text;
+    _recipientCardNumber = _recipientCardNumberController.text;
     _amount = double.tryParse(_amountController.text);
-
+    await Database().getSpecificMoneyAccount1(CardNumber: _recipientCardNumber);
     if (_amount != null) {
       _updateName();
       if (money2 > _amount!) {

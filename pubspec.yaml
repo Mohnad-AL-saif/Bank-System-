@@ -105,7 +105,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  fluttertoast: ^8.0.8
+  fluttertoast:
+    ^8.0.8
+    # تأكد من أنك تستخدم آخر نسخة متوفرة
+
   font_awesome_flutter: ^10.7.0
   supabase_flutter:
     ^2.5.2

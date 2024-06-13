@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["cardmoney", "Personpage", "supabase"]
+  "cSpell.words": [
+    "accountmoney",
+    "cardmoney",
+    "loginid",
+    "loginpassword",
+    "Personpage",
+    "supabase",
+    "updateinf"
+  ]
 }

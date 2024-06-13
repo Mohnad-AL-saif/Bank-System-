@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/money1.dart';
 import 'package:flutter_application_1/pages/Transfer_1.dart';
@@ -10,13 +12,37 @@ class BasicAccountInterface extends StatefulWidget {
 }
 
 class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
-  final nameOfFirstPerson = Database.nameOfFirstPerson;
-  final id1 = Database.id1;
-  final cardNum1 = Database.cardNum1;
+  String nameOfFirstPerson = Database.nameOfFirstPerson;
+  String cardNum1 = Database.cardNum1;
   String ChooseAnAccount_money1 = Database.money1;
-  final userId1 = Database.userId1;
-  String Basic_money1 = Database.money1;
+  String userId1 = Database.userId1;
+  String id1 = Database.id1;
   String money1Fetched = "";
+
+  Timer? _timer;
+
+  @override
+  void dispose() {
+    // Cancel the timer when the widget is disposed
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  void _updateName() async {
+    final nameOfFirstPersonFetched = await Database.nameOfFirstPerson;
+    final id1Fetched = await Database.id1;
+    final cardNum1Fetched = await Database.cardNum1;
+    final money1Fetched = await Database.money1;
+    final String userId1Fetched = await Database.userId1;
+
+    setState(() {
+      nameOfFirstPerson = nameOfFirstPersonFetched;
+      id1 = id1Fetched;
+      cardNum1 = cardNum1Fetched;
+      ChooseAnAccount_money1 = money1Fetched;
+      userId1 = userId1Fetched;
+    });
+  }
 
   void _navigateToTransfer() {
     Navigator.push(
@@ -76,7 +102,7 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                   left: 10,
                   child: Text(
                     'name: $nameOfFirstPerson\n User ID: $userId1 \n Card Number: $cardNum1 \n Money: $ChooseAnAccount_money1 \n',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -92,8 +118,9 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
               children: [
                 Column(
                   children: [
-                    Text('Transfer', style: TextStyle(color: Colors.black, fontSize: 16)),
-                    SizedBox(height: 5),
+                    const Text('Transfer',
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                    const SizedBox(height: 5),
                     Container(
                       width: 100,
                       height: 100,
@@ -101,7 +128,8 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                         child: Stack(
                           children: [
                             Ink.image(
-                              image: AssetImage('assets/money/transfer.png'),
+                              image:
+                                  const AssetImage('assets/money/transfer.png'),
                               fit: BoxFit.cover,
                               child: InkWell(
                                 onTap: _navigateToTransfer,
@@ -113,11 +141,12 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                     ),
                   ],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Column(
                   children: [
-                    Text('Add money', style: TextStyle(color: Colors.black, fontSize: 16)),
-                    SizedBox(height: 5),
+                    const Text('Add money',
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                    const SizedBox(height: 5),
                     Container(
                       width: 100,
                       height: 100,
@@ -125,7 +154,8 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                         child: Stack(
                           children: [
                             Ink.image(
-                              image: AssetImage('assets/money/deposit.png'),
+                              image:
+                                  const AssetImage('assets/money/deposit.png'),
                               fit: BoxFit.cover,
                               child: InkWell(
                                 onTap: _navigateToAddMoney,
@@ -137,11 +167,12 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                     ),
                   ],
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Column(
                   children: [
-                    Text('Withdraw Money', style: TextStyle(color: Colors.black, fontSize: 16)),
-                    SizedBox(height: 5),
+                    const Text('Withdraw Money',
+                        style: TextStyle(color: Colors.black, fontSize: 16)),
+                    const SizedBox(height: 5),
                     Container(
                       width: 100,
                       height: 100,
@@ -149,7 +180,8 @@ class _BasicAccountInterfaceState extends State<BasicAccountInterface> {
                         child: Stack(
                           children: [
                             Ink.image(
-                              image: AssetImage('assets/money/withdrawl.png'),
+                              image: const AssetImage(
+                                  'assets/money/withdrawl.png'),
                               fit: BoxFit.cover,
                               child: InkWell(
                                 onTap: _WithdrawMoney,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/pages/Choose%20An%20Account.dart';
 import 'package:flutter_application_1/pages/Investment%20account%20interface.dart';
+import 'package:flutter_application_1/pages/globals.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
 class Transfer3 extends StatefulWidget {
@@ -7,63 +9,83 @@ class Transfer3 extends StatefulWidget {
   static String money3 = Database.money3;
 
   @override
-  _Transfer1State createState() => _Transfer1State();
+  _Transfer3State createState() => _Transfer3State();
 }
 
-class _Transfer1State extends State<Transfer3> {
+class _Transfer3State extends State<Transfer3> {
   final TextEditingController _recipientCardNumberController3 =
       TextEditingController();
-  final TextEditingController _amountController2 = TextEditingController();
-  static String total3 = '';
+  final TextEditingController _amountController3 = TextEditingController();
+  static String totalTransfer3 = '';
+  static String totalDeduction3 = '';
   String _recipientCardNumber3 = '';
   double? _amount3 = 0.0;
   static String money3String3 = Database.money3;
   static double money3 = double.tryParse(money3String3) ?? 0.0;
+  static String cardNum3 = Database.cardNum3;
   String x = "";
+  double money_account_transferred_to_him3 = 0.0;
   double MoneyAccount3 = double.tryParse(money3String3) ?? 0.0;
 
   void _navigateToTransfer() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => InvestmentAccountInterface(),
+        builder: (context) => ChooseAnAccount(
+          loginid: savedLoginId, // تمرير القيمة المحفوظة هنا
+        ),
       ),
     );
   }
 
   Future<void> _updateName() async {
-    final money3Fetched = await Database.MoneyAccount1;
-    final xFetched = await Database.MoneyAccount1;
+    print("هنا _updateName");
+    print("$cardNum3");
+    // print("$cardNum2");
+    // print("$cardNum3");
 
-    await Database().getSpecificMoneyAccount(idNumber: _recipientCardNumber3);
+    await Database()
+        .getSpecificMoneyAccount3(CardNumber: _recipientCardNumber3);
+    print("هنا 2");
+
+    final money1Fetched = await Database.account_transferred_to_him3;
+    print("Fetched money1Fetched: $money1Fetched");
 
     setState(() {
-      money3String3 = money3Fetched;
-      money3 = double.tryParse(money3String3) ?? 0.0;
-      x = xFetched;
-      MoneyAccount3 = double.tryParse(x) ?? 0.0;
+      money_account_transferred_to_him3 = double.tryParse(money1Fetched) ?? 0.0;
+      print(
+          "Fetched money_account_transferred_to_him3: $money_account_transferred_to_him3");
     });
 
-    print("Fetched money3: $money3");
+    print(
+        "Fetched money_account_transferred_to_him3: $money_account_transferred_to_him3");
+    print(" money3: $money3");
     print("Fetched MoneyAccount3: $MoneyAccount3");
   }
 
   Future<void> _transferMoney() async {
     _recipientCardNumber3 = _recipientCardNumberController3.text;
-    _amount3 = double.tryParse(_amountController2.text);
+    _amount3 = double.tryParse(_amountController3.text);
 
     if (_amount3 != null) {
-      _updateName();
+      await _updateName();
       if (money3 > _amount3!) {
-        total3 = (money3 + _amount3!).toString();
-        print('Total3 after addition: $total3');
+        totalTransfer3 =
+            (money_account_transferred_to_him3 + _amount3!).toString();
+        totalDeduction3 = (money3 - _amount3!).toString();
+        print('totalTransfer3 after addition: $totalTransfer3');
 
-        await Database().updateAccount(_recipientCardNumber3, total3);
+        await Database().updateAccount(_recipientCardNumber3, totalTransfer3);
 
-        // await _updateName();
+        print('totalTransfer3 after addition: $totalDeduction3');
+
+        await Database().updateAccount(cardNum3, totalDeduction3);
+
+        print('totalTransfer after addition: $totalTransfer3');
+
         print('Updated amount in database: $MoneyAccount3');
       } else {
-        print('money3 is not greater than _amount3');
+        print('money1 is not greater than _amount');
       }
     } else {
       print('Invalid amount entered');
@@ -90,7 +112,7 @@ class _Transfer1State extends State<Transfer3> {
             ),
             const SizedBox(height: 20.0),
             TextFormField(
-              controller: _amountController2,
+              controller: _amountController3,
               decoration: const InputDecoration(
                 labelText: 'Amount to Transfer',
               ),
@@ -99,13 +121,53 @@ class _Transfer1State extends State<Transfer3> {
             const SizedBox(height: 20.0),
             ElevatedButton(
               onPressed: () async {
-                await _transferMoney();
-                // await _updateName();
-                _navigateToTransfer();
-                print('Transfer button pressed');
-                print(
-                    'Recipient Card Number: ${_recipientCardNumberController3.text}');
-                print('Amount to Transfer: ${_amountController2.text}');
+                try {
+                  // Perform transfer logic
+                  await _transferMoney();
+
+                  // Show success dialog
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Success'),
+                        content: Text(
+                            'The transfer has been completed successfully.'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+
+                  // Navigate to transfer screen
+                  _navigateToTransfer();
+                } catch (e) {
+                  // Show error dialog
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Error'),
+                        content: Text(
+                            'There was an error completing the transfer: $e'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
               },
               child: const Text('Transfer'),
             ),

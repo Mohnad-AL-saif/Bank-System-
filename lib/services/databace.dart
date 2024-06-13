@@ -34,6 +34,9 @@ class Database {
   static String money3 = "";
 
   static String MoneyAccount1 = "";
+  static String account_transferred_to_him = "";
+  static String account_transferred_to_him2 = "";
+  static String account_transferred_to_him3 = "";
 
   static String beneficiary1 = "";
   static String beneficiary2 = "";
@@ -56,15 +59,17 @@ class Database {
         .select()
         .match({"id": idNumber, "password": password});
     if (data.isNotEmpty) {
-      print("---------------------------------------");
+      // print("---------------------------------------");
       nameOfFirstPerson = data[0]['names'];
       nameOfSecondPerson = data.length > 1 ? data[1]['names'] : "";
       nameOfThirdPerson = data.length > 2 ? data[2]['names'] : "";
       // final User? user = data.user;
-      print(nameOfFirstPerson);
+      // print(nameOfFirstPerson);
 
-      print(data);
-      print("---------------------------------------"); // Database()
+      // print("---------------------------------------"); // Database()
+      // print("hna es7b"); // Database()
+      // print(data);
+      // print("---------------------------------------"); // Database()
       // .getAccount(id: idNumberController.text);
     }
 
@@ -95,6 +100,10 @@ class Database {
     return users;
   }
 
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
   Future<void> updateAccount(
     String? accountId,
@@ -130,21 +139,19 @@ class Database {
   Future<void> updateAddMoneyAccount(
     String? accountId,
     String amount,
-    // String? amount1,
   ) async {
     try {
-      final response = await supabase
-          .from('Account') // تأكد من اسم الجدول الصحيح
-          // .from('user') // تأكد من اسم الجدول الصحيح
+      if (accountId == null) {
+        throw Exception('Account ID cannot be null');
+      }
 
-          .update({
-        'money': amount.toString(),
-        // 'Beneficiary': amount1,
+      final response = await supabase.from('Account').update({
+        'money': amount,
+      }).eq('CardNumber', accountId);
 
-        // 'phone': amount,
-        // }).eq('ID', accountId!); // تأكد من اسم العمود الصحيح
-      }).eq('CardNumber', accountId!); // تأكد من اسم العمود الصحيح
+      print('Response: $response');
 
+      // Check if the response object has an error property
       if (response.error != null) {
         throw Exception('Failed to update account: ${response.error!.message}');
       } else {
@@ -160,7 +167,11 @@ class Database {
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   Future<List<User1>> getAccount({required String id}) async {
-    final response = await supabase.from('Account').select().eq('user_id', id);
+    final response = await supabase
+        .from('Account')
+        .select()
+        .eq('user_id', id)
+        .order('CONT', ascending: true);
 
     if (response.isNotEmpty) {
       id1 = response[0]['ID'] ?? "";
@@ -182,18 +193,19 @@ class Database {
       cardmoney1 = response[0]['money'];
       cardmoney2 = response[1]['money'];
       cardmoney3 = response[2]['money'];
-      print(cardmoney1);
-      print(cardmoney2);
-      print("3mk");
-      print(cardmoney3);
-      // String.tryParse(
-// String.tryParse(
-// String.tryParse(
-      print(response);
+//       print(cardmoney1);
+//       print(cardmoney2);
+//       print("3mk");
+      // print("شحو");
+//       print(cardmoney3);
+//       // String.tryParse(
+// // String.tryParse(
+// // String.tryParse(
+//       print(response);
 
-      print(money1);
-      print(money2);
-      print(money3);
+//       print(money1);
+//       print(money2);
+//       print(money3);
       // beneficiary1 = response[0]['Beneficiary'] ?? "";
       // beneficiary2 =
       //     response.length > 1 ? response[1]['Beneficiary'] ?? "" : "";
@@ -210,94 +222,67 @@ class Database {
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  Future<List<User1>> getSpecificMoneyAccount1({String? idNumber}) async {
+  Future<List<User1>> getSpecificMoneyAccount1({String? CardNumber}) async {
     // تنفيذ الاستعلام للحصول على البيانات
     // استبدال هذا الجزء بالكود الفعلي الذي يجلب البيانات
-    final response =
-        await supabase.from("Account").select().match({"ID": idNumber});
+    print("هنا داتا");
+
+    final response = await supabase
+        .from("Account")
+        .select()
+        .match({"CardNumber": CardNumber});
+    account_transferred_to_him = response[0]['money'];
+
     // await someDatabaseCall(idNumber);
     print(response);
-
+    List<User1> users = (response as List<dynamic>)
+        .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
+        .toList();
     // تحويل البيانات إلى قائمة من كائنات User1
-    return money1 = response[0]['money'];
+    return users;
+  }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  Future<List<User1>> getSpecificMoneyAccount2({String? CardNumber}) async {
+    // تنفيذ الاستعلام للحصول على البيانات
+    // استبدال هذا الجزء بالكود الفعلي الذي يجلب البيانات
+    print("2هنا داتا");
+
+    final response = await supabase
+        .from("Account")
+        .select()
+        .match({"CardNumber": CardNumber});
+    account_transferred_to_him2 = response[0]['money'];
+
+    // await someDatabaseCall(idNumber);
+    print(response);
+    List<User1> users = (response as List<dynamic>)
+        .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
+        .toList();
+    // تحويل البيانات إلى قائمة من كائنات User1
+    return users;
+  }
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  Future<List<User1>> getSpecificMoneyAccount3({String? CardNumber}) async {
+    // تنفيذ الاستعلام للحصول على البيانات
+    // استبدال هذا الجزء بالكود الفعلي الذي يجلب البيانات
+    print("3هنا داتا");
+
+    final response = await supabase
+        .from("Account")
+        .select()
+        .match({"CardNumber": CardNumber});
+    account_transferred_to_him3 = response[0]['money'];
+
+    // await someDatabaseCall(idNumber);
+    print(response);
+    List<User1> users = (response as List<dynamic>)
+        .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
+        .toList();
+    // تحويل البيانات إلى قائمة من كائنات User1
+    return users;
   }
 }
-
-
-
-//   Future<List<User1>> getAccount({required String id}) async {
-//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
-//     final response = await supabase.from('Accounts').select().eq('user_id', id);
-
-//     print(response);
-
-//     // nameOfFirstPerson = response[0]['user_id'];
-//     // nameOfSecondPerson =
-//     //     response.length > 1 ? response[1]['user_id'] : "";
-//     // nameOfThirdPerson =
-//     //      response[2]['user_id'] : "";
-
-//     id1 = response[0]['ID'];
-//     id2 = response[1]['ID'];
-//     id3 = response[2]['ID'];
-//     print(id1);
-
-//     userId1 = response[0]['user_id'];
-//     userId2 = response[1]['user_id'];
-//     userId3 = response[2]['user_id'];
-
-//     iban1 = response[0]['iban'];
-//     iban2 = response[1]['iban'];
-//     iban3 = response[2]['iban'];
-
-//     cardNum1 = response[0]['CardNum'];
-//     cardNum2 = response[1]['CardNum'];
-//     cardNum3 = response[2]['CardNum'];
-
-//     money1 = response[0]['money'];
-//     money2 = response[1]['money'];
-//     money3 = response[2]['money'];
-
-//     beneficiary1 = response[0]['Beneficiary'];
-//     beneficiary2 = response[1]['Beneficiary'];
-//     beneficiary3 = response[2]['Beneficiary'];
-
-//     List<User1> accounts = (response as List<dynamic>)
-//         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
-//         .toList();
-
-//     return accounts;
-//   }
-// }
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-//غلط
-// Future<List<User1>> getAccount({required String id}) async {
-//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
-//     final response = await Supabase.instance.client
-//         .from('Accounts')
-//         .select()
-//         .eq('user_id', id);
-//     print(response);
-//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-//صح
-//   Future<List<User1>> getAccount({required String id}) async {
-//     // Assume 'Accounts' is a table, adjust based on your actual storage structure
-//     final response = await supabase.from('Accounts').select().eq('user_id', id);
-//     print(response);
-
-//     nameOfFirstPerson = response.first['user_id']; // or [0]
-//     nameOfSecondPerson = response[1]['user_id'];
-
-//     nameOfThirdPerson = response[2]['user_id'];
-//     print(nameOfThirdPerson);
-//     // print("response[3]");
-//     print(response.length);
-
-//     List<User1> accounts = (response as List<dynamic>)
-//         .map((userMap) => User1.fromMap(userMap as Map<String, dynamic>))
-//         .toList();
-
-//     return accounts;
-//   }
-// }
