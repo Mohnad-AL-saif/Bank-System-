@@ -34,6 +34,9 @@ class Database {
   static String money3 = "";
 
   static String MoneyAccount1 = "";
+  static String MoneyAccount2 = "";
+  static String MoneyAccount3 = "";
+
   static String account_transferred_to_him = "";
   static String account_transferred_to_him2 = "";
   static String account_transferred_to_him3 = "";
@@ -189,6 +192,10 @@ class Database {
       money1 = response[0]['money'];
       money2 = response[1]['money'];
       money3 = response[2]['money'];
+
+      // // MoneyAccount1 = response[0]['money'];
+      // MoneyAccount2 = response[1]['money'];
+      // MoneyAccount3 = response[2]['money'];
 
       cardmoney1 = response[0]['money'];
       cardmoney2 = response[1]['money'];

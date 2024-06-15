@@ -1,75 +1,65 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
+// import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
+import 'package:flutter_application_1/pages/Choose%20An%20Account.dart';
+import 'package:flutter_application_1/pages/globals.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
 class AddMoney2 extends StatefulWidget {
   const AddMoney2({super.key});
-  static String money1 = Database.money1;
+  static String money2 = Database.money2;
 
   @override
-  _Transfer12State createState() => _Transfer12State();
+  _Transfer22State createState() => _Transfer22State();
 }
 
-class _Transfer12State extends State<AddMoney2> {
-  final nameOfFirstPerson = Database.nameOfFirstPerson;
-  final id2 = Database.id2;
+class _Transfer22State extends State<AddMoney2> {
+  final TextEditingController _amountController = TextEditingController();
   final cardNum2 = Database.cardNum2;
   String ChooseAnAccount_money2 = Database.money2;
   final userId2 = Database.userId2;
-
-  String _recipientCardNumber = '';
-  final TextEditingController _recipientCardNumberController =
-      TextEditingController();
-  final TextEditingController _amountController = TextEditingController();
-  static String total = '';
+  static String totalAddMoney = '';
   double? _amount = 0.0;
   static String money2String = Database.money2;
-  static double money2 = double.tryParse(money2String) ?? 0.0;
+  static double MoneyAccount2 = double.tryParse(money2String) ?? 0.0;
   String x = "";
-  double MoneyAccount2 = double.tryParse(money2String) ?? 0.0;
 
   void _navigateToTransfer() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BasicAccountInterface(),
+        builder: (context) => ChooseAnAccount(
+          loginid: savedLoginId, // تمرير القيمة المحفوظة هنا
+        ),
       ),
     );
   }
 
   Future<void> _updateName() async {
-    final money2Fetched = await Database.MoneyAccount1;
-    final xFetched2 = await Database.MoneyAccount1;
-
-    await Database().getSpecificMoneyAccount(idNumber: cardNum2);
+    final money2Fetched = Database.MoneyAccount2;
 
     setState(() {
       money2String = money2Fetched;
-      money2 = double.tryParse(money2String) ?? 0.0;
-      x = xFetched2;
-      MoneyAccount2 = double.tryParse(x) ?? 0.0;
+      MoneyAccount2 = double.tryParse(money2String) ?? 0.0;
     });
 
-    print("Fetched money1: $money2");
-    print("Fetched MoneyAccount1: $MoneyAccount2");
+    print("Fetched money2: $MoneyAccount2");
+    print("Fetched MoneyAccount2: $MoneyAccount2");
   }
 
   Future<void> _transferMoney() async {
-    _recipientCardNumber = _recipientCardNumberController.text;
     _amount = double.tryParse(_amountController.text);
-    await Database().getSpecificMoneyAccount1(CardNumber: _recipientCardNumber);
+
     if (_amount != null) {
       _updateName();
-      if (money2 > _amount!) {
-        total = (money2 + _amount!).toString();
-        print('Total after addition: $total');
+      if (MoneyAccount2 > _amount!) {
+        totalAddMoney = (MoneyAccount2 + _amount!).toString();
+        print('totalAddMoney after addition: $totalAddMoney');
 
-        await Database().updateAccount(cardNum2, total);
+        await Database().updateAccount(cardNum2, totalAddMoney);
 
-        // await _updateName();
         print('Updated amount in database: $MoneyAccount2');
       } else {
-        print('money1 is not greater than _amount');
+        print('money2 is not greater than _amount');
       }
     } else {
       print('Invalid amount entered');

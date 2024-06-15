@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
+// import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
+import 'package:flutter_application_1/pages/Choose%20An%20Account.dart';
+import 'package:flutter_application_1/pages/globals.dart';
 import 'package:flutter_application_1/services/databace.dart';
 
 class WithdrawMoney1 extends StatefulWidget {
@@ -11,60 +13,53 @@ class WithdrawMoney1 extends StatefulWidget {
 }
 
 class _WithdrawMoney1 extends State<WithdrawMoney1> {
-  final nameOfFirstPerson = Database.nameOfFirstPerson;
-  final id3 = Database.id3;
-  final cardNum3 = Database.cardNum3;
-  String ChooseAnAccount_money3 = Database.money3;
-  final userId3 = Database.userId3;
-
-  final TextEditingController _amountController3 = TextEditingController();
-  static String total3 = '';
-  double? _amount3 = 0.0;
-  static String money3String3 = Database.money3;
-  static double money3 = double.tryParse(money3String3) ?? 0.0;
-  String x3 = "";
-  double MoneyAccount1 = double.tryParse(money3String3) ?? 0.0;
+  final TextEditingController _amountController = TextEditingController();
+  final cardNum1 = Database.cardNum1;
+  String ChooseAnAccount_money1 = Database.money1;
+  final userId1 = Database.userId1;
+  static String totalAddMoney = '';
+  double? _amount = 0.0;
+  static String money1String = Database.money1;
+  static double MoneyAccount1 = double.tryParse(money1String) ?? 0.0;
+  String x = "";
 
   void _navigateToTransfer() {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => BasicAccountInterface(),
+        builder: (context) => ChooseAnAccount(
+          loginid: savedLoginId, // تمرير القيمة المحفوظة هنا
+        ),
       ),
     );
   }
 
   Future<void> _updateName() async {
-    final money3Fetched = await Database.MoneyAccount1;
-    final xFetched = await Database.MoneyAccount1;
-
-    await Database().getSpecificMoneyAccount(idNumber: cardNum3);
+    final money1Fetched = await Database.MoneyAccount1;
 
     setState(() {
-      money3String3 = money3Fetched;
-      money3 = double.tryParse(money3String3) ?? 0.0;
-      x3 = xFetched;
-      MoneyAccount1 = double.tryParse(x3) ?? 0.0;
+      money1String = money1Fetched;
+      MoneyAccount1 = double.tryParse(money1String) ?? 0.0;
     });
 
-    print("Fetched money3: $money3");
+    print("Fetched money1: $MoneyAccount1");
     print("Fetched MoneyAccount1: $MoneyAccount1");
   }
 
-  Future<void> _subtractMoney() async {
-    _amount3 = double.tryParse(_amountController3.text);
+  Future<void> _transferMoney() async {
+    _amount = double.tryParse(_amountController.text);
 
-    if (_amount3 != null) {
-      await _updateName();
-      if (money3 >= _amount3!) {
-        total3 = (money3 - _amount3!).toString();
-        print('Total after subtraction: $total3');
+    if (_amount != null) {
+      _updateName();
+      if (MoneyAccount1 > _amount!) {
+        totalAddMoney = (MoneyAccount1 - _amount!).toString();
+        print('totalAddMoney after addition: $totalAddMoney');
 
-        await Database().updateAccount(cardNum3, total3);
+        await Database().updateAccount(cardNum1, totalAddMoney);
 
         print('Updated amount in database: $MoneyAccount1');
       } else {
-        print('Not enough funds to complete the transaction');
+        print('money1 is not greater than _amount');
       }
     } else {
       print('Invalid amount entered');
@@ -75,36 +70,74 @@ class _WithdrawMoney1 extends State<WithdrawMoney1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Withdraw Money'),
+        title: const Text('Withdraw Money'),
       ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Amount to Withdraw',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextFormField(
+              controller: _amountController,
+              decoration: const InputDecoration(
+                labelText: 'Amount to Withdraw',
               ),
-              SizedBox(height: 20),
-              TextField(
-                controller: _amountController3,
-                decoration: InputDecoration(labelText: 'Enter amount'),
-                keyboardType: TextInputType.number,
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _subtractMoney,
-                child: Text('Withdraw'),
-              ),
-              SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: _navigateToTransfer,
-                child: Text('Back to Account Interface'),
-              ),
-            ],
-          ),
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () async {
+                print(savedLoginId);
+                try {
+                  await _transferMoney();
+
+                  // Show success dialog
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Success'),
+                        content: Text(
+                            'The Withdraw Money has been completed successfully.'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+
+                  // Navigate to transfer screen
+                  _navigateToTransfer();
+                } catch (e) {
+                  // Show error dialog
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Error'),
+                        content: Text(
+                            'There was an error completing the transfer: $e'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('OK'),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                }
+              },
+              child: const Text('Withdraw Money'),
+            )
+          ],
         ),
       ),
     );
