@@ -101,12 +101,12 @@ version: 0.1.0
 
 environment:
   sdk: ">=2.17.0 <4.0.0"
-
+  
 dependencies:
   flutter:
     sdk: flutter
-  fluttertoast:
-    ^8.0.8
+  fluttertoast: ^8.0.8
+  http: ^0.13.3
     # تأكد من أنك تستخدم آخر نسخة متوفرة
 
   font_awesome_flutter: ^10.7.0

@@ -25,7 +25,7 @@
 //           // الجزء الخاص بالمحتوى الأعلى
 //           ButtonLayout(loginid: widget.loginid),
 //           // الجزء الخاص بشعارات الرعاة
-//           const SponsorsPage(),
+//           // const SponsorsPage(),
 //         ],
 //       ),
 //     );
@@ -419,198 +419,196 @@
 //   }
 // }
 
-// class SponsorsPage extends StatefulWidget {
-//   const SponsorsPage({super.key});
+// // class SponsorsPage extends StatefulWidget {
+// //   const SponsorsPage({super.key});
 
-//   @override
-//   _SponsorsPageState createState() => _SponsorsPageState();
-// }
+// //   @override
+// //   _SponsorsPageState createState() => _SponsorsPageState();
+// // }
 
-// class _SponsorsPageState extends State<SponsorsPage> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return const SingleChildScrollView(
-//       child: Padding(
-//         padding: EdgeInsets.all(16.0),
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.center,
-//           children: [
-//             Text(
-//               'SPONSORS',
-//               style: TextStyle(
-//                 fontSize: 20,
-//                 fontWeight: FontWeight.bold,
-//                 decoration: TextDecoration.none,
-//               ),
-//             ),
-//             SizedBox(height: 20),
-//             Row(
-//               mainAxisAlignment: MainAxisAlignment.center,
-//               children: [
-//                 ImageContainer(
-//                   imageUrl: "https://via.placeholder.com/100x50",
-//                   width: 550,
-//                   height: 350,
-//                 ),
-//                 SizedBox(width: 20),
-//                 ImageContainer(
-//                   imageUrl:
-//                       'https://media.licdn.com/dms/image/D4E03AQEjc4iFthW9lA/profile-displayphoto-shrink_800_800/0/1707212695035?e=1723680000&v=beta&t=P9Digh9L5tLnRruxbzk5aRDZfSRSYIMRJzfOl5pIvvw',
-//                   width: 550,
-//                   height: 350,
-//                 ),
-//               ],
-//             ),
-//             SizedBox(height: 40),
-//             //   Text(
-//             //     'SPONSORS',
-//             //     style: TextStyle(
-//             //       fontSize: 20,
-//             //       fontWeight: FontWeight.bold,
-//             //       decoration: TextDecoration.none,
-//             //     ),
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   Row(
-//             //     mainAxisAlignment: MainAxisAlignment.center,
-//             //     children: [
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //     ],
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   Row(
-//             //     mainAxisAlignment: MainAxisAlignment.center,
-//             //     children: [
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/150x50',
-//             //       ),
-//             //     ],
-//             //   ),
-//             //   SizedBox(height: 40),
-//             //   Text(
-//             //     'Development of the picoCTF platform was made possible by generous gifts and grants from:',
-//             //     style: TextStyle(
-//             //       fontSize: 20,
-//             //       fontWeight: FontWeight.bold,
-//             //       decoration: TextDecoration.none,
-//             //     ),
-//             //     textAlign: TextAlign.center,
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   Row(
-//             //     mainAxisAlignment: MainAxisAlignment.center,
-//             //     children: [
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/100x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/100x50',
-//             //       ),
-//             //       SizedBox(width: 20),
-//             //       ImageContainer(
-//             //         imageUrl: 'https://via.placeholder.com/100x50',
-//             //       ),
-//             //     ],
-//             //   ),
-//             //   SizedBox(height: 40),
-//             //   Text(
-//             //     'DDoS Protection Solutions generously provided by:',
-//             //     style: TextStyle(
-//             //       fontSize: 20,
-//             //       fontWeight: FontWeight.bold,
-//             //       decoration: TextDecoration.none,
-//             //     ),
-//             //     textAlign: TextAlign.center,
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   ImageContainer(
-//             //     imageUrl: 'https://via.placeholder.com/200x50',
-//             //   ),
-//             //   SizedBox(height: 40),
-//             //   Text(
-//             //     'Challenge resources provided by:',
-//             //     style: TextStyle(
-//             //       fontSize: 20,
-//             //       fontWeight: FontWeight.bold,
-//             //       decoration: TextDecoration.none,
-//             //     ),
-//             //     textAlign: TextAlign.center,
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   ImageContainer(
-//             //     imageUrl: 'https://via.placeholder.com/100x50',
-//             //   ),
-//             //   SizedBox(height: 40),
-//             //   Text(
-//             //     'Web design resources provided by:',
-//             //     style: TextStyle(
-//             //       fontSize: 20,
-//             //       fontWeight: FontWeight.bold,
-//             //       decoration: TextDecoration.none,
-//             //     ),
-//             //     textAlign: TextAlign.center,
-//             //   ),
-//             //   SizedBox(height: 20),
-//             //   ImageContainer(
-//             //     imageUrl: 'https://via.placeholder.com/100x50',
-//             //     width: 0,
-//             //     height: 0,
-//             //   ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+// // class _SponsorsPageState extends State<SponsorsPage> {
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return const SingleChildScrollView(
+// //       child: Padding(
+// //         padding: EdgeInsets.all(16.0),
+// //         child: Column(
+// //           crossAxisAlignment: CrossAxisAlignment.center,
+// //           children: [
+// //             Text(
+// //               'SPONSORS',
+// //               style: TextStyle(
+// //                 fontSize: 20,
+// //                 fontWeight: FontWeight.bold,
+// //                 decoration: TextDecoration.none,
+// //               ),
+// //             ),
+// //             SizedBox(height: 20),
+// //             Row(
+// //               mainAxisAlignment: MainAxisAlignment.center,
+// //               children: [
+// //                 ImageContainer(
+// //                   imageUrl: "https://via.placeholder.com/100x50",
+// //                   width: 550,
+// //                   height: 350,
+// //                 ),
+// //                 SizedBox(width: 20),
+// //                 ImageContainer(
+// //                   imageUrl:
+// //                       'https://media.licdn.com/dms/image/D4E03AQEjc4iFthW9lA/profile-displayphoto-shrink_800_800/0/1707212695035?e=1723680000&v=beta&t=P9Digh9L5tLnRruxbzk5aRDZfSRSYIMRJzfOl5pIvvw',
+// //                   width: 550,
+// //                   height: 350,
+// //                 ),
+// //               ],
+// //             ),
+// //             SizedBox(height: 40),
+// //             //   Text(
+// //             //     'SPONSORS',
+// //             //     style: TextStyle(
+// //             //       fontSize: 20,
+// //             //       fontWeight: FontWeight.bold,
+// //             //       decoration: TextDecoration.none,
+// //             //     ),
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   Row(
+// //             //     mainAxisAlignment: MainAxisAlignment.center,
+// //             //     children: [
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //     ],
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   Row(
+// //             //     mainAxisAlignment: MainAxisAlignment.center,
+// //             //     children: [
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/150x50',
+// //             //       ),
+// //             //     ],
+// //             //   ),
+// //             //   SizedBox(height: 40),
+// //             //   Text(
+// //             //     'Development of the picoCTF platform was made possible by generous gifts and grants from:',
+// //             //     style: TextStyle(
+// //             //       fontSize: 20,
+// //             //       fontWeight: FontWeight.bold,
+// //             //       decoration: TextDecoration.none,
+// //             //     ),
+// //             //     textAlign: TextAlign.center,
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   Row(
+// //             //     mainAxisAlignment: MainAxisAlignment.center,
+// //             //     children: [
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/100x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/100x50',
+// //             //       ),
+// //             //       SizedBox(width: 20),
+// //             //       ImageContainer(
+// //             //         imageUrl: 'https://via.placeholder.com/100x50',
+// //             //       ),
+// //             //     ],
+// //             //   ),
+// //             //   SizedBox(height: 40),
+// //             //   Text(
+// //             //     'DDoS Protection Solutions generously provided by:',
+// //             //     style: TextStyle(
+// //             //       fontSize: 20,
+// //             //       fontWeight: FontWeight.bold,
+// //             //       decoration: TextDecoration.none,
+// //             //     ),
+// //             //     textAlign: TextAlign.center,
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   ImageContainer(
+// //             //     imageUrl: 'https://via.placeholder.com/200x50',
+// //             //   ),
+// //             //   SizedBox(height: 40),
+// //             //   Text(
+// //             //     'Challenge resources provided by:',
+// //             //     style: TextStyle(
+// //             //       fontSize: 20,
+// //             //       fontWeight: FontWeight.bold,
+// //             //       decoration: TextDecoration.none,
+// //             //     ),
+// //             //     textAlign: TextAlign.center,
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   ImageContainer(
+// //             //     imageUrl: 'https://via.placeholder.com/100x50',
+// //             //   ),
+// //             //   SizedBox(height: 40),
+// //             //   Text(
+// //             //     'Web design resources provided by:',
+// //             //     style: TextStyle(
+// //             //       fontSize: 20,
+// //             //       fontWeight: FontWeight.bold,
+// //             //       decoration: TextDecoration.none,
+// //             //     ),
+// //             //     textAlign: TextAlign.center,
+// //             //   ),
+// //             //   SizedBox(height: 20),
+// //             //   ImageContainer(
+// //             //     imageUrl: 'https://via.placeholder.com/100x50',
+// //             //     width: 0,
+// //             //     height: 0,
+// //             //   ),
+// //           ],
+// //         ),
+// //       ),
+// //     );
+// //   }
+// // }
 
-// class ImageContainer extends StatelessWidget {
-//   final String imageUrl;
-//   final double width;
-//   final double height;
+// // class ImageContainer extends StatelessWidget {
+// //   final String imageUrl;
+// //   final double width;
+// //   final double height;
 
-//   const ImageContainer({
-//     super.key,
-//     required this.imageUrl,
-//     required this.width,
-//     required this.height,
-//   });
+// //   const ImageContainer({
+// //     super.key,
+// //     required this.imageUrl,
+// //     required this.width,
+// //     required this.height,
+// //   });
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       decoration: const BoxDecoration(
-//         border: Border.fromBorderSide(BorderSide.none),
-//       ),
-//       child: Image.network(imageUrl, height: height, width: width),
-//     );
-//   }
-// }
+// //   @override
+// //   Widget build(BuildContext context) {
+// //     return Container(
+// //       decoration: const BoxDecoration(
+// //         border: Border.fromBorderSide(BorderSide.none),
+// //       ),
+// //       child: Image.network(imageUrl, height: height, width: width),
+// //     );
+// //   }
+// // }
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/Basic%20account%20interface.dart';
 import 'package:flutter_application_1/pages/Interface%20for%20savings%20account.dart';
 import 'package:flutter_application_1/pages/Investment%20account%20interface.dart';
 import 'package:flutter_application_1/services/databace.dart';
-// import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ChooseAnAccount extends StatefulWidget {
   final String loginid;
@@ -625,41 +623,6 @@ class ChooseAnAccount extends StatefulWidget {
 }
 
 class _ChooseAnAccountState extends State<ChooseAnAccount> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black, // تعيين خلفية الصفحة إلى اللون الأسود
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              // الجزء الخاص بالمحتوى الأعلى
-              ButtonLayout(loginid: widget.loginid),
-              // الجزء الخاص بشعارات الرعاة
-              const SponsorsPage(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ButtonLayout extends StatefulWidget {
-  final String loginid;
-
-  const ButtonLayout({
-    super.key,
-    required this.loginid,
-  });
-
-  @override
-  _ButtonLayoutState createState() => _ButtonLayoutState();
-}
-
-class _ButtonLayoutState extends State<ButtonLayout> {
   String money1String = "";
   String money2String = "";
   String money3String = "";
@@ -751,36 +714,31 @@ class _ButtonLayoutState extends State<ButtonLayout> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
-          children: [
-            // الجزء الخاص بالمحتوى الأعلى
-            Container(
-              height: 850, // ارتفاع محدد
-              width: 2000, // عرض أكبر لتفعيل التمرير الأفقي
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      'assets/TEST background/RBI-compliance-cloud4c-webpage-1.webp'),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Center(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    if (constraints.maxWidth > 300) {
-                      return _buildWideLayout();
-                    } else {
-                      return _buildNarrowLayout();
-                    }
-                  },
-                ),
+      child: Column(
+        children: [
+          Container(
+            height: 850, 
+            width: double.infinity, 
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(
+                    'assets/TEST background/RBI-compliance-cloud4c-webpage-1.webp'),
+                fit: BoxFit.cover,
               ),
             ),
-          ],
-        ),
+            child: Center(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  if (constraints.maxWidth > 300) {
+                    return _buildWideLayout();
+                  } else {
+                    return _buildNarrowLayout();
+                  }
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -801,7 +759,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum1,
@@ -809,7 +767,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
               onPressed: _updateButton1,
               image: 'assets/images_card/card_mada_alinma.png',
             ),
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum2,
@@ -817,14 +775,13 @@ class _ButtonLayoutState extends State<ButtonLayout> {
               onPressed: _updateButton2,
               image: 'images_card/Credit_Card_Platinum_Touch.png',
             ),
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum3,
               money: ChooseAnAccount_money3,
               onPressed: _updateButton3,
-              image:
-                  'images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
+              image: 'images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
             ),
           ],
         ),
@@ -846,7 +803,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
         const SizedBox(height: 50),
         Column(
           children: [
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum1,
@@ -855,7 +812,7 @@ class _ButtonLayoutState extends State<ButtonLayout> {
               image: 'assets/images_card/card_mada_alinma.png',
             ),
             const SizedBox(height: 20),
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum2,
@@ -864,14 +821,13 @@ class _ButtonLayoutState extends State<ButtonLayout> {
               image: 'images_card/Credit_Card_Platinum_Touch.png',
             ),
             const SizedBox(height: 20),
-            AccountCard(
+            _buildAccountCard(
               name: nameOfFirstPerson,
               userId: userId1,
               cardNumber: cardNum3,
               money: ChooseAnAccount_money3,
               onPressed: _updateButton3,
-              image:
-                  'images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
+              image: 'images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
             ),
           ],
         ),
@@ -966,28 +922,15 @@ class _ButtonLayoutState extends State<ButtonLayout> {
       ],
     );
   }
-}
 
-class AccountCard extends StatelessWidget {
-  final String name;
-  final String userId;
-  final String cardNumber;
-  final String money;
-  final VoidCallback onPressed;
-  final String image;
-
-  const AccountCard({
-    super.key,
-    required this.name,
-    required this.userId,
-    required this.cardNumber,
-    required this.money,
-    required this.onPressed,
-    required this.image,
-  });
-
-  @override
-  Widget build(BuildContext context) {
+  Widget _buildAccountCard({
+    required String name,
+    required String userId,
+    required String cardNumber,
+    required String money,
+    required VoidCallback onPressed,
+    required String image,
+  }) {
     return Stack(
       children: [
         Container(
@@ -1034,189 +977,6 @@ class AccountCard extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class SponsorsPage extends StatefulWidget {
-  const SponsorsPage({super.key});
-
-  @override
-  _SponsorsPageState createState() => _SponsorsPageState();
-}
-
-class _SponsorsPageState extends State<SponsorsPage> {
-  // Row(
-  //   mainAxisAlignment: MainAxisAlignment.center,
-  //   children: [
-  //     // ImageContainer(
-  //     //   imageUrl: "https://via.placeholder.com/100x50",
-  //     //   width: 550,
-  //     //   height: 350,
-  //     //   linkUrl: "https://example.com", // رابط عند النقر
-  //     // ),
-  //     // SizedBox(width: 20),
-  //     ImageContainer(
-  //       imageUrl:
-  //           'https://media.licdn.com/dms/image/D4E03AQEjc4iFthW9lA/profile-displayphoto-shrink_800_800/0/1707212695035?e=1723680000&v=beta&t=P9Digh9L5tLnRruxbzk5aRDZfSRSYIMRJzfOl5pIvvw',
-  //       width: 550,
-  //       height: 350,
-  //       linkUrl:
-  //           "https://www.linkedin.com/in/raghad-k-alsaif/", // رابط عند النقر
-  //     ),
-  //   ],
-  // ),
-
-  @override
-  Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Text(
-                'SPONSORS',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.none,
-                ),
-              ),
-              const SizedBox(height: 20),
-              Column(
-                children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.network(
-                        'https://media.licdn.com/dms/image/D4E03AQEjc4iFthW9lA/profile-displayphoto-shrink_800_800/0/1707212695035?e=1723680000&v=beta&t=P9Digh9L5tLnRruxbzk5aRDZfSRSYIMRJzfOl5pIvvw',
-                        width: 550,
-                        height: 350,
-                        fit: BoxFit.cover,
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            _launchURL(
-                                "https://www.linkedin.com/in/raghad-k-alsaif/");
-                          },
-                          style: OutlinedButton.styleFrom(
-                            fixedSize: const Size(550, 350),
-                            side: const BorderSide(
-                                color: Colors.transparent), // اجعل الحدود شفافة
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(0), // حواف مربعة
-                            ),
-                            shadowColor: Colors.transparent, // بدون ظل
-                            backgroundColor: Colors.transparent, // خلفية شفافة
-                          ),
-                          child: const Text(
-                            '',
-                            style: TextStyle(
-                              color: Colors
-                                  .blue, // يمكنك تعديل لون النص حسب الحاجة
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'SPONSORS',
-                    style: TextStyle(
-                      color: Color.fromARGB(255, 255, 255, 255),
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Image.network(
-                        'https://media.licdn.com/dms/image/D4E03AQEjc4iFthW9lA/profile-displayphoto-shrink_800_800/0/1707212695035?e=1723680000&v=beta&t=P9Digh9L5tLnRruxbzk5aRDZfSRSYIMRJzfOl5pIvvw',
-                        width: 550,
-                        height: 350,
-                        fit: BoxFit.cover,
-                      ),
-                      Positioned(
-                        bottom: 0,
-                        child: OutlinedButton(
-                          onPressed: () {
-                            _launchURL(
-                                "https://www.linkedin.com/in/muhannad-alsaif/");
-                          },
-                          style: OutlinedButton.styleFrom(
-                            fixedSize: const Size(550, 350),
-                            side: const BorderSide(
-                                color: Colors.transparent), // اجعل الحدود شفافة
-                            shape: RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.circular(0), // حواف مربعة
-                            ),
-                            shadowColor: Colors.transparent, // بدون ظل
-                            backgroundColor: Colors.transparent, // خلفية شفافة
-                          ),
-                          child: const Text(
-                            '',
-                            style: TextStyle(
-                              color: Colors
-                                  .blue, // يمكنك تعديل لون النص حسب الحاجة
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 40),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  void _launchURL(String url) async {
-    if (await canLaunch(url)) {
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
-    }
-  }
-}
-
-class ImageContainer extends StatelessWidget {
-  final String imageUrl;
-  final double width;
-  final double height;
-  final String linkUrl;
-
-  const ImageContainer({
-    super.key,
-    required this.imageUrl,
-    required this.width,
-    required this.height,
-    required this.linkUrl,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        border: Border.fromBorderSide(BorderSide.none),
-      ),
-      child: Image.network(imageUrl, height: height, width: width),
     );
   }
 }
