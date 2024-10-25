@@ -124,7 +124,7 @@ class _WithdrawMoney2 extends State<WithdrawMoney2> {
                       return AlertDialog(
                         title: Text('Error'),
                         content: Text(
-                            'There was an error completing the transfer: $e'),
+                            'There was an error completing the Withdraw: $e'),
                         actions: <Widget>[
                           TextButton(
                             child: Text('OK'),

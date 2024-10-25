@@ -93,7 +93,7 @@ class _InterfaceForSavingsAccount extends State<InterfaceForSavingsAccount> {
                   width: 500,
                   height: 350, // Set the desired height
                   child: Image.asset(
-                    'assets/images_card/Credit_Card_Platinum_Touch.png',
+                    'images_card/3aee80ba-b499-4b9c-8153-b60b95ab6ac6.jpg',
                     fit: BoxFit.fill, // Adjust the image to cover the container
                   ),
                 ),

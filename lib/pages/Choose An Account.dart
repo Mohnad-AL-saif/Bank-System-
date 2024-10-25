@@ -722,7 +722,7 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(
-                    'assets/TEST background/RBI-compliance-cloud4c-webpage-1.webp'),
+                    'assets/TEST background/13c298aa-6c28-4b60-af30-6860a78845f8 (1).jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -765,7 +765,7 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
               cardNumber: cardNum1,
               money: ChooseAnAccount_money1,
               onPressed: _updateButton1,
-              image: 'assets/images_card/card_mada_alinma.png',
+              image: 'images_card/3aee80ba-b499-4b9c-8153-b60b95ab6ac6.jpg',
             ),
             _buildAccountCard(
               name: nameOfFirstPerson,
@@ -773,7 +773,7 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
               cardNumber: cardNum2,
               money: ChooseAnAccount_money2,
               onPressed: _updateButton2,
-              image: 'images_card/Credit_Card_Platinum_Touch.png',
+              image: 'images_card/3aee80ba-b499-4b9c-8153-b60b95ab6ac6.jpg',
             ),
             _buildAccountCard(
               name: nameOfFirstPerson,
@@ -781,7 +781,7 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
               cardNumber: cardNum3,
               money: ChooseAnAccount_money3,
               onPressed: _updateButton3,
-              image: 'images_card/Tamkeen-plus-platinum-credit-card_albilad.png',
+              image: 'images_card/3aee80ba-b499-4b9c-8153-b60b95ab6ac6.jpg',
             ),
           ],
         ),
@@ -839,9 +839,9 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
     return Column(
       children: [
         const Text(
-          'إخفاء المعلومات',
+          'hide info ',
           style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Color.fromARGB(255, 0, 0, 0),
             fontSize: 16,
           ),
         ),
@@ -883,9 +883,9 @@ class _ChooseAnAccountState extends State<ChooseAnAccount> {
     return Column(
       children: [
         const Text(
-          'عرض أو تحديث المعلومات',
+          'show details',
           style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Color.fromARGB(255, 000, 000, 000),
             fontSize: 16,
           ),
         ),

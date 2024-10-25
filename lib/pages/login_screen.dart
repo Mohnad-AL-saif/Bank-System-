@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Spacer(),
                       Center(
                           child: TextUtil(
-                        text: "Login Saudi Central Bank",
+                        text: "Login ",
                         weight: true,
                         size: 30,
                       )),
