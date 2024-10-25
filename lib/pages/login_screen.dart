@@ -162,7 +162,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Spacer(),
                       Center(
                           child: TextUtil(
-                        text: "Login",
+                        text: "Login Saudi Central Bank",
                         weight: true,
                         size: 30,
                       )),
@@ -293,14 +293,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       const Spacer(),
                       Center(
                         child: TextUtil(
-                          text: "Don't have an account? REGISTER",
+                          text: "Don't have an account?",
                           size: 12,
                           weight: true,
                         ),
                       ),
                       ElevatedButton(
                         onPressed: _createAccount,
-                        child: const Text('Create Account'),
+                        child: const Text('Create Account / REGISTER'),
                       ),
                       const Spacer(),
                     ],
